@@ -2,6 +2,7 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import { getPostUrl } from "@/utils/getPostPaths";
+import { postFeedContent } from "@/utils/feedContent";
 import config from "@/config";
 
 export async function GET() {
@@ -14,11 +15,16 @@ export async function GET() {
     title: config.site.title,
     description: "Alex Lee 的长文：AI 工程实践、开源动态、基础设施与安全。",
     site: config.site.url,
-    items: sortedPosts.map(({ data, id, filePath }) => ({
+    items: await Promise.all(
+      sortedPosts.map(async ({ data, id, filePath }) => ({
       link: getPostUrl(id, filePath, "zh"),
       title: data.title,
       description: data.description,
       pubDate: new Date(data.modDatetime ?? data.pubDatetime),
-    })),
+        content: await postFeedContent(
+          sortedPosts.find(p => p.id === id)!
+        ),
+      }))
+    ),
   });
 }
