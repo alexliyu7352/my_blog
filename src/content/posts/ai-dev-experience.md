@@ -6,6 +6,7 @@ tags: ["AI Coding", "Engineering"]
 lang: en
 ogImage: ./cover-ai-dev.webp
 translationKey: ai-dev-experience
+xPost: https://x.com/alexlee20122022/status/2114503106142540182
 ---
 
 Someone asked me what good approaches there are for developing with AI right now. I said it mainly depends on how far you are using AI, and whether it is a new project or maintaining an old project. If this were really expanded on, it would be a very large amount of content. But briefly, from my personal experience, there are a few points:

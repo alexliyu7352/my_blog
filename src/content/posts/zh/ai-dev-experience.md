@@ -6,6 +6,7 @@ tags: ["AI 开发", "工程实践"]
 lang: zh
 ogImage: ./cover-ai-dev.webp
 translationKey: ai-dev-experience
+xPost: https://x.com/alexlee20122022/status/2114502627673206802
 ---
 
 有人问我，现在用 AI 开发有什么好方法。我说这主要看你把 AI 用到什么程度了，是新项目还是维护旧项目。真要展开来说，篇幅会非常大，这里简单说一下我个人的几点经验：

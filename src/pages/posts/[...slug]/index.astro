@@ -15,6 +15,7 @@ import BackButton from "./_components/BackButton.astro";
 import BackToTopButton from "./_components/BackToTopButton.astro";
 import AdjacentPostNav from "./_components/AdjacentPostNav.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
+import IconX from "@/assets/icons/socials/x.svg";
 import config from "@/config";
 
 export async function getStaticPaths() {
@@ -338,6 +339,36 @@ const ogImage = ogImageUrl
         )
       }
     </aside>
+
+    {
+      post.data.xPost && (
+        <div class="mt-6">
+          <a
+            href={post.data.xPost}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border-border hover:border-accent hover:text-accent group flex items-center justify-center gap-2.5 rounded-lg border px-5 py-3.5 font-medium transition-colors"
+          >
+            <IconX class="size-4 fill-current" />
+            {postLang === "en"
+              ? "Discuss on X"
+              : postLang === "zh"
+                ? "在 X 上讨论"
+                : "在 X 上討論"}
+            <span class="opacity-60 transition-transform group-hover:translate-x-0.5">
+              →
+            </span>
+          </a>
+          <p class="mt-2 text-center text-sm opacity-60">
+            {postLang === "en"
+              ? "Comments live on X — replies, quotes and discussion happen there."
+              : postLang === "zh"
+                ? "评论都在 X 上——回复、引用和讨论都在那边进行。"
+                : "評論都在 X 上——回覆、引用和討論都在那邊進行。"}
+          </p>
+        </div>
+      )
+    }
 
     <hr class="my-8 border-dashed" />
 

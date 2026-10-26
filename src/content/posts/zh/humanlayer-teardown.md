@@ -6,6 +6,7 @@ tags: ["AI Agents", "工具评测", "开源"]
 lang: zh
 ogImage: ./diagram-humanlayer-zh.png
 translationKey: humanlayer
+xPost: https://x.com/alexlee20122022/article/2113967138654605453
 featured: true
 ---
 

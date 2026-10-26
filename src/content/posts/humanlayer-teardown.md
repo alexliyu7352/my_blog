@@ -6,6 +6,7 @@ tags: ["AI Agents", "Tooling", "Open Source"]
 lang: en
 ogImage: ./diagram-humanlayer.png
 translationKey: humanlayer
+xPost: https://x.com/alexlee20122022/article/2113993323904168039
 featured: true
 ---
 
