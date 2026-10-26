@@ -14,17 +14,15 @@ const label =
 
 {
   tocHeadings.length > 1 && (
-    <nav id="toc" aria-label="Table of contents" class="text-sm">
-      <p class="mb-3 text-xs font-semibold tracking-widest uppercase opacity-70">
-        {label}
-      </p>
-      <ul class="border-s border-border">
+    <nav id="toc" aria-label="Table of contents" class="toc">
+      <p class="toc-label">{label}</p>
+      <ul class="toc-list">
         {tocHeadings.map(h => (
-          <li class:list={[{ "ms-4": h.depth === 3 }]}>
+          <li>
             <a
               href={`#${h.slug}`}
               data-toc-link={h.slug}
-              class="toc-link text-muted-foreground hover:text-accent -ms-px block border-s-2 border-transparent py-1 ps-3 leading-snug transition-colors"
+              class:list={["toc-link", { "toc-sub": h.depth === 3 }]}
             >
               {h.text}
             </a>
@@ -35,34 +33,112 @@ const label =
   )
 }
 
-<script is:inline data-astro-rerun>
-  function initScrollSpy() {
-    const links = Array.from(document.querySelectorAll("[data-toc-link]"));
-    if (links.length === 0) return;
-
-    const headings = links
-      .map(l => document.getElementById(l.getAttribute("data-toc-link")))
-      .filter(Boolean);
-    if (headings.length === 0) return;
-
-    function setActive(slug) {
-      for (const link of links) {
-        const active = link.getAttribute("data-toc-link") === slug;
-        link.classList.toggle("text-accent", active);
-        link.classList.toggle("font-medium", active);
-        link.classList.toggle("border-accent", active);
-      }
-    }
-
-    const observer = new IntersectionObserver(
-      entries => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        }
-      },
-      { rootMargin: "0px 0px -70% 0px", threshold: 0 }
-    );
-    for (const h of headings) observer.observe(h);
+<style>
+  .toc {
+    font-size: 13px;
   }
-  initScrollSpy();
+  .toc-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 10px;
+    padding-inline-start: 12px;
+  }
+  .toc-list {
+    border-inline-start: 1px solid
+      color-mix(in srgb, currentColor 14%, transparent);
+    max-height: calc(100vh - 11rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding-bottom: 4px;
+  }
+  .toc-link {
+    display: block;
+    margin-inline-start: -1px;
+    border-inline-start: 2px solid transparent;
+    border-radius: 0 6px 6px 0;
+    padding: 5px 12px;
+    line-height: 1.45;
+    opacity: 0.6;
+    text-decoration: none;
+    transition:
+      opacity 0.15s ease,
+      color 0.15s ease,
+      background-color 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .toc-link:hover {
+    opacity: 1;
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
+  }
+  .toc-sub {
+    padding-inline-start: 24px;
+    font-size: 12.5px;
+  }
+  .toc-link.toc-active {
+    opacity: 1;
+    color: var(--accent);
+    border-inline-start-color: var(--accent);
+    font-weight: 600;
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+  }
+</style>
+
+<script is:inline data-astro-rerun>
+  (function () {
+    function initTocSpy() {
+      const links = Array.from(document.querySelectorAll("[data-toc-link]"));
+      if (links.length === 0) return;
+      const heads = links
+        .map(l => document.getElementById(l.getAttribute("data-toc-link")))
+        .filter(Boolean);
+      if (heads.length === 0) return;
+      const list = document.querySelector(".toc-list");
+      let ticking = false;
+
+      function update() {
+        ticking = false;
+        const pos = window.scrollY + 140;
+        let current = heads[0];
+        for (const h of heads) {
+          const top = h.getBoundingClientRect().top + window.scrollY;
+          if (top <= pos) current = h;
+          else break;
+        }
+        for (const l of links) {
+          l.classList.toggle(
+            "toc-active",
+            l.getAttribute("data-toc-link") === current.id
+          );
+        }
+        const active = links.find(
+          l => l.getAttribute("data-toc-link") === current.id
+        );
+        if (active && list && list.scrollHeight > list.clientHeight) {
+          const lr = list.getBoundingClientRect();
+          const ar = active.getBoundingClientRect();
+          if (ar.top < lr.top || ar.bottom > lr.bottom) {
+            active.scrollIntoView({ block: "nearest" });
+          }
+        }
+      }
+      function onScroll() {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      }
+      if (window.__tocSpyCleanup) window.__tocSpyCleanup();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      window.__tocSpyCleanup = function () {
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+      };
+      update();
+    }
+    initTocSpy();
+  })();
 </script>
