@@ -1,0 +1,103 @@
+---
+import Layout from "./Layout.astro";
+import config from "@/config";
+
+type Props = {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+  pubDatetime?: Date;
+  modDatetime?: Date | null;
+  translations?: { lang: string; url: string }[];
+  postLang?: string;
+};
+
+const { site } = config;
+
+const {
+  title,
+  description,
+  ogImage,
+  canonicalURL,
+  pubDatetime,
+  modDatetime,
+  translations,
+  postLang,
+} = Astro.props;
+
+const hreflangOf = (lang: string) =>
+  lang === "zh" ? "zh-Hans" : lang === "zh-tw" ? "zh-Hant" : "en";
+
+const hreflangAlternates = (translations ?? []).map(t => ({
+  hreflang: hreflangOf(t.lang),
+  href: new URL(t.url, site.url).href,
+}));
+const enVersion = (translations ?? []).find(t => t.lang === "en");
+if (enVersion) {
+  hreflangAlternates.push({
+    hreflang: "x-default",
+    href: new URL(enVersion.url, site.url).href,
+  });
+}
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title ?? site.title,
+  image: ogImage,
+  ...(pubDatetime && { datePublished: pubDatetime.toISOString() }),
+  ...(modDatetime && { dateModified: modDatetime.toISOString() }),
+  author: [
+    {
+      "@type": "Person",
+      name: site.author,
+      ...(site.profile && { url: site.profile }),
+    },
+  ],
+};
+---
+
+<Layout
+  {title}
+  {description}
+  {ogImage}
+  {canonicalURL}
+  htmlLang={postLang === "zh" ? "zh-CN" : postLang === "zh-tw" ? "zh-TW" : "en"}
+>
+  <Fragment slot="head">
+    <!-- Override og:type for article pages -->
+    <meta property="og:type" content="article" />
+
+    {
+      hreflangAlternates.map(alt => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+      ))
+    }
+
+    {
+      pubDatetime && (
+        <meta
+          property="article:published_time"
+          content={pubDatetime.toISOString()}
+        />
+      )
+    }
+    {
+      modDatetime && (
+        <meta
+          property="article:modified_time"
+          content={modDatetime.toISOString()}
+        />
+      )
+    }
+
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(structuredData)}
+    />
+  </Fragment>
+
+  <slot />
+</Layout>

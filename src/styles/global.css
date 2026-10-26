@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@import "./theme.css";
+@import "./typography.css";
+@import "rehype-callouts/theme/obsidian";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@layer base {
+  * {
+    @apply border-border outline-accent/75;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-muted) transparent;
+  }
+  a,
+  button,
+  #main-content {
+    @apply outline-accent outline-offset-1 focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility max-w-app {
+  @apply max-w-5xl;
+}
+
+@utility app-layout {
+  @apply max-w-app mx-auto w-full px-4;
+}
+
+@utility active-nav {
+  @apply underline decoration-wavy decoration-2 underline-offset-8;
+}
+
+:target {
+  scroll-margin-block: 1rem;
+}
+
+/* Chinese pages (Simplified + Traditional): sans-serif body, serif headings.
+   English pages keep the theme's default font untouched. */
+html[lang^="zh"] body {
+  font-family:
+    "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    ui-sans-serif, system-ui, sans-serif;
+}
+html[lang^="zh"] h1,
+html[lang^="zh"] h2,
+html[lang^="zh"] h3,
+html[lang^="zh"] h4,
+html[lang^="zh"] h5,
+html[lang^="zh"] h6 {
+  font-family:
+    "Noto Serif SC", "Songti SC", "STSong", "SimSun", ui-serif, Georgia, serif;
+}

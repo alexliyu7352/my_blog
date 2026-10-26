@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { getPostUrl } from "@/utils/getPostPaths";
+import { toTransitionName } from "@/utils/toTransitionName";
+import Datetime from "./Datetime.astro";
+
+type Props = {
+  variant?: "h2" | "h3";
+} & CollectionEntry<"posts">;
+
+const { variant: Heading = "h2", id, data, filePath } = Astro.props;
+
+const { title, description, ogImage, ...props } = data;
+const postUrl = getPostUrl(id, filePath, Astro.currentLocale);
+---
+
+<li class="my-6">
+  {
+    ogImage && (
+      <a
+        href={postUrl}
+        class="border-border mb-3 block overflow-hidden rounded-lg border"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        {typeof ogImage === "string" ? (
+          <img
+            src={ogImage}
+            alt=""
+            class="aspect-[16/9] w-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <Image
+            src={ogImage}
+            alt=""
+            class="aspect-[16/9] w-full object-cover"
+          />
+        )}
+      </a>
+    )
+  }
+  <a
+    href={postUrl}
+    class:list={[
+      "text-accent inline-block text-lg font-medium",
+      "decoration-dashed underline-offset-4 hover:underline",
+      "focus-visible:no-underline focus-visible:underline-offset-0",
+    ]}
+  >
+    <Heading transition:name={toTransitionName(id)}>
+      {title}
+    </Heading>
+  </a>
+  <Datetime {...props} />
+  <p>{description}</p>
+</li>

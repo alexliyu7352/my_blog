@@ -1,0 +1,68 @@
+---
+type Heading = { depth: number; slug: string; text: string };
+
+type Props = {
+  headings: Heading[];
+  lang?: string;
+};
+
+const { headings, lang = "en" } = Astro.props;
+const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+const label =
+  lang === "zh" ? "本页目录" : lang === "zh-tw" ? "本頁目錄" : "On this page";
+---
+
+{
+  tocHeadings.length > 1 && (
+    <nav id="toc" aria-label="Table of contents" class="text-sm">
+      <p class="mb-3 text-xs font-semibold tracking-widest uppercase opacity-70">
+        {label}
+      </p>
+      <ul class="border-s border-border">
+        {tocHeadings.map(h => (
+          <li class:list={[{ "ms-4": h.depth === 3 }]}>
+            <a
+              href={`#${h.slug}`}
+              data-toc-link={h.slug}
+              class="toc-link text-muted-foreground hover:text-accent -ms-px block border-s-2 border-transparent py-1 ps-3 leading-snug transition-colors"
+            >
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<script is:inline data-astro-rerun>
+  function initScrollSpy() {
+    const links = Array.from(document.querySelectorAll("[data-toc-link]"));
+    if (links.length === 0) return;
+
+    const headings = links
+      .map(l => document.getElementById(l.getAttribute("data-toc-link")))
+      .filter(Boolean);
+    if (headings.length === 0) return;
+
+    function setActive(slug) {
+      for (const link of links) {
+        const active = link.getAttribute("data-toc-link") === slug;
+        link.classList.toggle("text-accent", active);
+        link.classList.toggle("font-medium", active);
+        link.classList.toggle("border-accent", active);
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "0px 0px -70% 0px", threshold: 0 }
+    );
+    for (const h of headings) observer.observe(h);
+  }
+  initScrollSpy();
+</script>

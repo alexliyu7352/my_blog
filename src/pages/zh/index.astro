@@ -1,0 +1,88 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Socials from "@/components/Socials.astro";
+import Card from "@/components/Card.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+import config from "@/config";
+
+const { socials } = config;
+
+const posts = await getCollection("posts");
+const zhPosts = getSortedPosts(posts).filter(({ data }) => data.lang === "zh");
+const featuredPosts = zhPosts.filter(({ data }) => data.featured);
+const recentPosts = zhPosts.filter(({ data }) => !data.featured);
+---
+
+<Layout
+  htmlLang="zh-CN"
+  title={`简体中文 | ${config.site.title}`}
+  description="Alex Lee 的简体中文长文：AI 开发实战、开源动态、基础设施与安全。每篇均有英文版。"
+>
+  <Header />
+  <main id="main-content" class="app-layout my-1">
+    <section id="hero" class="border-border border-b pt-8 pb-6">
+      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
+        老兵下场学 AI。
+      </h1>
+      <p>
+        24+ 年全栈开发经验，曾带领 400 人技术团队，现仍是多个大型开源项目的核心维护者。AI
+        这场革命已经来了——我选择亲自下场，边学边做边写，只讲干货。这里是我长文的母本，X
+        和小红书上是分发。
+      </p>
+      <p class="mt-2">
+        English readers:{" "}
+        <LinkButton
+          class="hover:text-accent underline decoration-dashed underline-offset-4"
+          href="/"
+        >
+          back to the English home
+        </LinkButton>
+      </p>
+      {
+        socials.length > 0 && (
+          <div class="mt-4 flex max-sm:flex-col sm:items-center">
+            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">社交链接:</div>
+            <Socials />
+          </div>
+        )
+      }
+    </section>
+
+    {
+      featuredPosts.length > 0 && (
+        <section
+          id="featured"
+          class:list={[
+            "pt-12 pb-6",
+            { "border-border border-b": recentPosts.length > 0 },
+          ]}
+        >
+          <h2 class="text-2xl font-semibold tracking-wide">置顶</h2>
+          <ul>
+            {featuredPosts.map(data => (
+              <Card variant="h3" {...data} />
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      recentPosts.length > 0 && (
+        <section id="recent-posts" class="pt-12 pb-6">
+          <h2 class="text-2xl font-semibold tracking-wide">最新文章</h2>
+          <ul>
+            {recentPosts.map(data => (
+              <Card variant="h3" {...data} />
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </main>
+  <Footer />
+</Layout>
