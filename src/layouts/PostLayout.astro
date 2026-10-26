@@ -11,6 +11,7 @@ type Props = {
   modDatetime?: Date | null;
   translations?: { lang: string; url: string }[];
   postLang?: string;
+  rssHref?: string;
 };
 
 const { site } = config;
@@ -24,6 +25,7 @@ const {
   modDatetime,
   translations,
   postLang,
+  rssHref,
 } = Astro.props;
 
 const hreflangOf = (lang: string) =>
@@ -45,6 +47,8 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   headline: title ?? site.title,
+  ...(description && { description }),
+  ...(postLang && { inLanguage: hreflangOf(postLang) }),
   image: ogImage,
   ...(pubDatetime && { datePublished: pubDatetime.toISOString() }),
   ...(modDatetime && { dateModified: modDatetime.toISOString() }),
@@ -64,6 +68,7 @@ const structuredData = {
   {ogImage}
   {canonicalURL}
   htmlLang={postLang === "zh" ? "zh-CN" : postLang === "zh-tw" ? "zh-TW" : "en"}
+  {rssHref}
 >
   <Fragment slot="head">
     <!-- Override og:type for article pages -->

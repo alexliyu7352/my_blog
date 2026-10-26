@@ -13,6 +13,7 @@ type Props = {
   ogImage?: string;
   canonicalURL?: string;
   htmlLang?: string;
+  rssHref?: string;
 };
 
 const { site } = config;
@@ -29,7 +30,13 @@ const pageLang = htmlLang ?? Astro.currentLocale ?? site.lang;
 const isZhPage = pageLang.startsWith("zh");
 
 const socialImageURL = new URL(ogImage, Astro.site ?? Astro.url);
-const rssHref = "/rss.xml";
+const rssHref =
+  Astro.props.rssHref ??
+  (pageLang === "zh"
+    ? "/zh/rss.xml"
+    : pageLang === "zh-tw"
+      ? "/zh-tw/rss.xml"
+      : "/rss.xml");
 ---
 
 <!doctype html>

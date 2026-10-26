@@ -104,6 +104,13 @@ const {
 
 const { Content, headings } = await render(post);
 const postLang = post.data.lang;
+const postUrl = new URL(Astro.url.pathname, config.site.url).href;
+const feedHref =
+  postLang === "zh"
+    ? "/zh/rss.xml"
+    : postLang === "zh-tw"
+      ? "/zh-tw/rss.xml"
+      : "/rss.xml";
 
 let ogImageUrl: string | undefined;
 
@@ -130,11 +137,12 @@ const ogImage = ogImageUrl
   title={`${title} | ${config.site.title}`}
   description={description}
   ogImage={ogImage}
-  canonicalURL={canonicalURL}
+  canonicalURL={postUrl}
   pubDatetime={pubDatetime}
   modDatetime={modDatetime}
   translations={translations}
   postLang={postLang}
+  rssHref={feedHref}
 >
   <Header />
 
@@ -213,7 +221,123 @@ const ogImage = ogImageUrl
       {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} size="sm" />)}
     </ul>
 
-    <ShareLinks />
+    <div class="xl:hidden">
+      <ShareLinks />
+    </div>
+
+    <aside
+      class="border-border mt-10 rounded-lg border p-4 text-sm leading-relaxed sm:p-5"
+      style="background: color-mix(in srgb, currentColor 3.5%, transparent)"
+      aria-label="Copyright and repost notice"
+    >
+      {
+        postLang === "zh" ? (
+          <>
+            <p>
+              <strong>© {pubDatetime.getFullYear()} Alex Lee。</strong>
+              本文首发于{" "}
+              <a
+                href={postUrl}
+                class="text-accent break-all underline decoration-dashed underline-offset-4"
+              >
+                {postUrl}
+              </a>
+            </p>
+            <p class="mt-2">
+              本文采用{" "}
+              <a
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank"
+                rel="license noopener noreferrer"
+                class="text-accent underline decoration-dashed underline-offset-4"
+              >
+                CC BY-NC-SA 4.0
+              </a>{" "}
+              授权。欢迎转载、翻译：请注明作者并附原文链接、仅限非商业使用、以相同方式共享。商业使用请先在{" "}
+              <a
+                href="https://x.com/alexlee20122022"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-accent underline decoration-dashed underline-offset-4"
+              >
+                X
+              </a>{" "}
+              上联系我。
+            </p>
+          </>
+        ) : postLang === "zh-tw" ? (
+          <>
+            <p>
+              <strong>© {pubDatetime.getFullYear()} Alex Lee。</strong>
+              本文首發於{" "}
+              <a
+                href={postUrl}
+                class="text-accent break-all underline decoration-dashed underline-offset-4"
+              >
+                {postUrl}
+              </a>
+            </p>
+            <p class="mt-2">
+              本文採用{" "}
+              <a
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank"
+                rel="license noopener noreferrer"
+                class="text-accent underline decoration-dashed underline-offset-4"
+              >
+                CC BY-NC-SA 4.0
+              </a>{" "}
+              授權。歡迎轉載、翻譯：請註明作者並附原文連結、僅限非商業使用、以相同方式共享。商業使用請先在{" "}
+              <a
+                href="https://x.com/alexlee20122022"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-accent underline decoration-dashed underline-offset-4"
+              >
+                X
+              </a>{" "}
+              上聯繫我。
+            </p>
+          </>
+        ) : (
+          <>
+            <p>
+              <strong>© {pubDatetime.getFullYear()} Alex Lee.</strong>{" "}
+              Originally published at{" "}
+              <a
+                href={postUrl}
+                class="text-accent break-all underline decoration-dashed underline-offset-4"
+              >
+                {postUrl}
+              </a>
+            </p>
+            <p class="mt-2">
+              This post is licensed under{" "}
+              <a
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank"
+                rel="license noopener noreferrer"
+                class="text-accent underline decoration-dashed underline-offset-4"
+              >
+                CC BY-NC-SA 4.0
+              </a>
+              . Reposts and translations are welcome — keep my name and a link
+              back to the original, non-commercial use, share alike. For
+              commercial use, reach me on{" "}
+              <a
+                href="https://x.com/alexlee20122022"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-accent underline decoration-dashed underline-offset-4"
+              >
+                X
+              </a>{" "}
+              first.
+            </p>
+          </>
+        )
+      }
+    </aside>
 
     <hr class="my-8 border-dashed" />
 
@@ -221,10 +345,16 @@ const ogImage = ogImageUrl
     </div>
     <aside class="sticky top-24 hidden h-fit w-60 shrink-0 self-start pt-2 xl:block">
       <TableOfContents {headings} lang={postLang} />
+      <div class="mt-9">
+        <p class="mb-2 ps-3 text-[11px] font-semibold tracking-[0.12em] uppercase opacity-55">
+          {postLang === "en" ? "Share" : "分享"}
+        </p>
+        <ShareLinks rail />
+      </div>
     </aside>
    </div>
   </main>
-  <Footer />
+  <Footer feedLang={postLang} />
 </PostLayout>
 
 <script is:inline data-astro-rerun>

@@ -1,15 +1,21 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import Socials from "./Socials.astro";
-import { useTranslations } from "@/i18n";
+import IconRss from "@/assets/icons/IconRss.svg";
+import config from "@/config";
 
 type Props = {
   noMarginTop?: boolean;
+  feedLang?: string;
 } & HTMLAttributes<"footer">;
 
-const { noMarginTop = false, class: className, ...attrs } = Astro.props;
+const { noMarginTop = false, class: className, feedLang, ...attrs } = Astro.props;
 
-const t = useTranslations(Astro.currentLocale);
+const lang = feedLang ?? Astro.currentLocale ?? "en";
+const feedHref =
+  lang === "zh" ? "/zh/rss.xml" : lang === "zh-tw" ? "/zh-tw/rss.xml" : "/rss.xml";
+const licenseText =
+  lang === "zh" ? "内容授权" : lang === "zh-tw" ? "內容授權" : "Licensed under";
 const currentYear = new Date().getFullYear();
 ---
 
@@ -21,10 +27,31 @@ const currentYear = new Date().getFullYear();
     class="border-border flex flex-col items-center justify-between border-t py-6 sm:flex-row-reverse sm:py-4"
   >
     <Socials />
-    <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
-      <span>{t.footer.copyright} &#169; {currentYear}</span>
-      <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
-      <span>{t.footer.allRightsReserved}</span>
+    <div
+      class="my-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm"
+    >
+      <span>© {currentYear} {config.site.author}</span>
+      <span aria-hidden="true">·</span>
+      <span>
+        {licenseText}{" "}
+        <a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          target="_blank"
+          rel="license noopener noreferrer"
+          class="hover:text-accent underline decoration-dashed underline-offset-4"
+        >
+          CC BY-NC-SA 4.0
+        </a>
+      </span>
+      <span aria-hidden="true">·</span>
+      <a
+        href={feedHref}
+        class="hover:text-accent inline-flex items-center gap-1"
+        aria-label="RSS Feed"
+      >
+        <IconRss width={13} height={13} />
+        RSS
+      </a>
     </div>
   </div>
 </footer>
