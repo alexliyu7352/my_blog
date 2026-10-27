@@ -6,7 +6,7 @@ tags: ["AI Governance", "Anthropic"]
 lang: en
 ogImage: ./cover-anthropic-ipo-wheel.webp
 translationKey: anthropic-ipo-steering-wheel
-xPost: https://x.com/alexlee20122022/status/2115022379444789614
+xPost: https://x.com/alexlee20122022/status/2115002993489911968
 ---
 
 if you buy shares in a listed company, you usually get two things for your money: a claim on the profits, and a vote, small but real, on who runs the place. anthropic's s-1, filed on october 26 for a nasdaq listing under the ticker ant, sells you the first and keeps the second. the share count and the price range are still blank in the document, so nothing is trading yet and the listing itself is still some distance off. the governance pages, though, are completely written, and they are the part of this filing worth reading slowly.

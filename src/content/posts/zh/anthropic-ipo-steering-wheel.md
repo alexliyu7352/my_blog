@@ -6,7 +6,7 @@ tags: ["AI 治理", "Anthropic"]
 lang: zh
 ogImage: ./cover-anthropic-ipo-wheel.webp
 translationKey: anthropic-ipo-steering-wheel
-xPost: https://x.com/alexlee20122022/status/2115020238079279512
+xPost: https://x.com/alexlee20122022/status/2114999043050934413
 ---
 
 买一家上市公司的股票，钱花出去，通常换回来两样东西：一样是分钱的权利，公司赚了钱有你一份；一样是投票的权利，票数不多，但谁来当这个家，你能投上一票。anthropic 在 10 月 26 日交给 sec 的这份 s-1 里，第一样照卖，第二样留下了。文件里发多少股、价格区间都还空着，所以股票现在还买不到，离上市也还有一段距离。但治理那部分已经全部写死了，而且在我看来，那才是这份文件里最值得慢慢看的地方。
