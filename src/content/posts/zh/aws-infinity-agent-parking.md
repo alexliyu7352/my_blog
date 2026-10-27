@@ -6,6 +6,7 @@ tags: ["AI Agent", "AWS", "开源"]
 lang: zh
 ogImage: ./cover-aws-infinity.webp
 translationKey: aws-infinity-agent-parking
+xPost: https://x.com/alexlee20122022/status/2115226155020349653
 ---
 
 aws 报的 75,000 个 agent 同时使用，看起来很牛逼是不是？但是实际上你不能这样看。这里说的是停放 75,000 个，而不是同时运行 75,000 个。这差异就非常大了。但是你要说这东西有没有价值？那么我认为有，而且我还挺看好的。因为它解决的正好就是 agent 最贵的那个毛病：等。

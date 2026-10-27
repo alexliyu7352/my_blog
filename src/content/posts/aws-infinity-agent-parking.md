@@ -6,6 +6,7 @@ tags: ["AI Agents", "AWS", "Open Source"]
 lang: en
 ogImage: ./cover-aws-infinity.webp
 translationKey: aws-infinity-agent-parking
+xPost: https://x.com/alexlee20122022/status/2115227088009761080
 ---
 
 AWS says Infinity held 75,000 agents at once on a Raspberry Pi. Sounds insane, right? But you can't read that number the way AWS wants you to. Those are 75,000 agents parked, not 75,000 agents working, and that's a very different claim. Does that make the thing worthless? Not to me, I actually like it quite a bit. Because it goes after the most expensive habit an agent has, which is waiting.
