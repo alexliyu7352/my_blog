@@ -6,6 +6,7 @@ tags: ["AI", "開源", "編程工具"]
 lang: zh
 ogImage: ./cover-ai-memory.webp
 translationKey: ai-memory-teardown
+xPost: https://x.com/alexlee20122022/status/2115407994020340170
 ---
 
 GitHub 上最近有個項目火得不像話：52.8 萬行代碼，掛在全站日榜第 9 名，一萬四千多顆星。我手癢，前兩天把它裝上真跑了一遍，代碼也從頭翻到尾。
