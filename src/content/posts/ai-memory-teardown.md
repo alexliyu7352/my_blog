@@ -16,7 +16,7 @@ This teardown runs a bit long, and I think it's worth your time. If you'd rather
 
 ## The problem it's solving
 
-The pain it targets is real enough. You're halfway through something in Claude Code, you switch to Codex, and the new tool knows nothing about the two hours you just spent. You end up briefing it from scratch, again. ai-memory's answer is a separate resident memory service that twenty-odd coding agents all share. Whichever tool you quit, the next one walks in and picks up where you left off.
+The pain it targets is real enough. You're halfway through something in Claude Code, you switch to Codex, and the new agent knows nothing about the two hours you just spent. You end up briefing it from scratch, again. The reason is mundane: each agent keeps its session logs and context in its own place, so there is nothing shared for the next one to pick up. ai-memory's answer is a separate resident memory service that twenty-odd coding agents all share. Whichever agent you quit, the next one walks in and picks up where you left off.
 
 ## How it works
 
@@ -28,7 +28,7 @@ The handoff even has rules: a handoff can only be claimed once, so two agents ca
 
 ![How ai-memory works, end to end: hooks record the session, the service redacts and consolidates it into notes, the notes live in git plus a database index, and the next tool claims a handoff](./diagram-ai-memory-how-en.png)
 
-## The engineering is real
+## What I verified
 
 - One resident service, shared by twenty-odd coding agents
 - Sessions recorded automatically when they end, secrets redacted before storage
@@ -72,7 +72,7 @@ If you want a summary a human would actually want to read, you plug in an LLM an
 
 ## My dumb workaround
 
-And the job it does for all that money? Here's my own setup, which is embarrassingly low-tech. Claude Code and Codex both keep their session logs as plaintext JSONL files on your own disk. When I switch tools, I tell the new one: go read the other tool's session log and pick up the context. It goes and reads it. If the log is long, it skims and greps like the rest of us. Done. No server, no database, no bill.
+And the job it does for all that money? Here's my own setup, which is embarrassingly low-tech. Claude Code and Codex both keep their session logs as plaintext JSONL files on your own disk. When I switch agents, I tell the new one: go read the other agent's session log and pick up the context. It goes and reads it. If the log is long, it skims and greps like the rest of us. Done. No server, no database, no bill.
 
 Two machines, you'll ask, the logs aren't in the same place. Sync the folder. Git works, anything works, half an hour once and you're set for good. Running a permanent service for that is maths I can't make add up.
 
@@ -82,10 +82,10 @@ The longer I sit with this, the more I think the trick generalises. Plenty of pr
 
 ## Who it's actually for
 
-It's not useless for everyone. A team that needs one shared memory across several people, all using different tools, genuinely can't do that with the memory files each tool ships. The claim-once handoff and the multi-user permissions exist for exactly that, and they're well designed. Long projects bouncing between machines and tools every day, same story, worth a look. For the rest of us, solo developers who switch between at most two tools, everything extra it gives you is cost.
+It's not useless for everyone. A team that needs one shared memory across several people, all using different agents, genuinely can't do that with the memory files each agent ships. The claim-once handoff and the multi-user permissions exist for exactly that, and they're well designed. Long projects bouncing between machines and agents every day, same story, worth a look. For the rest of us, solo developers who switch between at most two agents, everything extra it gives you is cost.
 
 So my advice, next time one of these huge, complete, chart-topping projects shows up, is don't install it yet. Ask first whether the thing it solves is something you already have a dumber way of doing. If you do, stop there. The day a whole team needs to share one memory, ai-memory will still be here.
 
-And I'm curious: when you switch coding tools, how do you carry the context over? If you've got something cheaper than reading the log, I honestly want to hear it.
+And I'm curious: when you switch agents, how do you carry the context over? If you've got something cheaper than reading the log, I honestly want to hear it.
 
 Source: https://github.com/akitaonrails/ai-memory
