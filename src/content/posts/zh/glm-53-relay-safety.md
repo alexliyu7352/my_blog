@@ -6,6 +6,7 @@ tags: ["AI", "安全", "大模型"]
 lang: zh
 ogImage: ./cover-glm-relay.webp
 translationKey: glm-53-relay-safety
+xPost: https://x.com/alexlee20122022/status/2115279938593124383
 ---
 
 Cloudflare 10 月 26 日披露了一次泄漏，跑在它 Workers AI 上的 GLM-5.3，在差不多两个星期里，会把一个用户的提示词片段，带进另一个用户的回答里。这件事 9 月 9 日就修好了，前后中招的回答一共 155 条，你要问我这件事本身有多大，我说实话，不大。
