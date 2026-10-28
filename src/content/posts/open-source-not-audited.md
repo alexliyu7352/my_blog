@@ -6,6 +6,7 @@ tags: ["Open Source", "Security", "GitHub"]
 lang: en
 ogImage: ./cover-open-source-not-audited.webp
 translationKey: open-source-not-audited
+xPost: https://x.com/alexlee20122022/status/2115254698311856383
 ---
 
 A backdoor hidden in an interview repo sounds like a small story. It involves job candidates, one fake company, one poisoned project, and if you are not currently interviewing, it is easy to file it under somebody else's problem. I nearly did. Then it kept nagging at me, because the uncomfortable part is not really the interview. It's what the case says about open source. The code in an open source project is sitting there for anyone to read. Sitting there to be read, and actually having been read carefully by somebody, turn out to be very different things.

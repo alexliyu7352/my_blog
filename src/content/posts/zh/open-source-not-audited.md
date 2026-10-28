@@ -6,6 +6,7 @@ tags: ["开源", "安全", "GitHub"]
 lang: zh
 ogImage: ./cover-open-source-not-audited.webp
 translationKey: open-source-not-audited
+xPost: https://x.com/alexlee20122022/status/2115254048362483762
 ---
 
 一个面试 repo 里藏了后门，这事听起来挺小的，范围好像也就到找工作的程序员为止，和其他人没多大关系。我一开始就是这么看的，但是再想一下就发现，它真正戳中的是一个挺别扭的常识问题：开源项目的代码虽然摆在那里，谁都能看，但摆在那里，跟有人认认真真审过，完全是两回事。
