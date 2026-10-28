@@ -6,6 +6,7 @@ tags: ["AI", "Security", "LLM Inference"]
 lang: en
 ogImage: ./cover-glm-relay.webp
 translationKey: glm-53-relay-safety
+xPost: https://x.com/alexlee20122022/status/2115283721578496390
 ---
 
 On October 26, Cloudflare disclosed a leak in GLM-5.3, a model it serves on Workers AI. For about two weeks, fragments of one customer's prompt could surface inside another customer's answer. It was fixed on September 9, and the total damage was 155 responses. If you ask me how big that incident is on its own, honestly, it isn't.
