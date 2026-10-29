@@ -3,10 +3,10 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://blog.go5.si/",
-    title: "Alex Lee",
+    title: "AI Ferryman Alex",
     description:
       "Field notes from a full-stack veteran learning AI in public — open source, AI engineering, and infrastructure, in English and Chinese.",
-    author: "Alex Lee",
+    author: "AI Ferryman Alex",
     profile: "https://x.com/alexlee20122022",
     ogImage: "default-og.jpg",
     lang: "en",

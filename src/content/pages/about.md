@@ -1,9 +1,9 @@
 ---
 title: "About"
-description: "About Alex Lee — full-stack veteran, OSS maintainer, learning AI in public."
+description: "About AI Ferryman Alex — full-stack veteran, OSS maintainer, learning AI in public."
 ---
 
-I'm Alex Lee. Full-stack developer for 24+ years; I formerly led a 400-person engineering team, worked on multiple internet infrastructure projects, and I'm still a core maintainer of several large open-source projects.
+I'm AI Ferryman Alex. Full-stack developer for 24+ years; I formerly led a 400-person engineering team, worked on multiple internet infrastructure projects, and I'm still a core maintainer of several large open-source projects.
 
 My view on AI is simple: it is an industrial-revolution-level shift, and it is not stopping. The only way not to be left behind is to be in it — so I learn in public and write down what actually works: AI engineering practice, open-source dynamics, infrastructure, and security, always from a practitioner's point of view.
 

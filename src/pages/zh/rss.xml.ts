@@ -13,7 +13,7 @@ export async function GET() {
 
   return rss({
     title: config.site.title,
-    description: "Alex Lee 的长文：AI 工程实践、开源动态、基础设施与安全。",
+    description: "AI摆渡人 Alex 的长文：AI 工程实践、开源动态、基础设施与安全。",
     site: config.site.url,
     items: await Promise.all(
       sortedPosts.map(async ({ data, id, filePath }) => ({
