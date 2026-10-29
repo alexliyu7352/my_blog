@@ -1,5 +1,5 @@
 ---
-pubDatetime: 2026-10-29T17:00:00-07:00
+pubDatetime: 2026-10-29T16:52:00-07:00
 title: "The clock in your prompt is quietly killing your cache"
 description: "A timestamp that changes every second, sitting on line one of your prompt, breaks prefix matching from the first character, so the tens of thousands of fixed words behind it get billed at full price on every request. ProjectDiscovery changed the timestamp to day precision: cache hits went from 3.2% to 91.8%, and their LLM bill dropped 59%."
 tags: ["LLM", "Prompt Engineering", "AI"]
