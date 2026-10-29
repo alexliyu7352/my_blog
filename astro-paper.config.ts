@@ -5,7 +5,7 @@ export default defineAstroPaperConfig({
     url: "https://blog.go5.si/",
     title: "AI Ferryman Alex",
     description:
-      "Field notes from a full-stack veteran learning AI in public — open source, AI engineering, and infrastructure, in English and Chinese.",
+      "Field notes from a full-stack developer of 24+ years and OSS maintainer — open source, AI engineering, and infrastructure, in English and Chinese.",
     author: "AI Ferryman Alex",
     profile: "https://x.com/alexlee20122022",
     ogImage: "default-og.jpg",
