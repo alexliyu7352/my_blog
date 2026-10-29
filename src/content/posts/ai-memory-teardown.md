@@ -6,6 +6,7 @@ tags: ["AI", "Open Source", "Coding Agents"]
 lang: en
 ogImage: ./cover-ai-memory.webp
 translationKey: ai-memory-teardown
+xPost: https://x.com/alexlee20122022/status/2115609672870994030
 ---
 
 There's a project on GitHub right now that's hard to ignore, called ai-memory: 528,000 lines of Rust, sitting at No. 9 on today's overall trending chart, past 14,000 stars and still climbing. I couldn't resist. I installed it, ran it for real, and read the code from end to end.
