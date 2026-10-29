@@ -6,6 +6,7 @@ tags: ["LLM", "提示词", "AI"]
 lang: zh
 ogImage: ./diagram-prompt-cache-zh.png
 translationKey: prompt-cache-clock
+xPost: https://x.com/alexlee20122022/status/2115952539782746220
 ---
 
 提示词里那个时钟，正在悄悄废掉你的缓存

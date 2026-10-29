@@ -6,6 +6,7 @@ tags: ["LLM", "Prompt Engineering", "AI"]
 lang: en
 ogImage: ./diagram-prompt-cache-en.png
 translationKey: prompt-cache-clock
+xPost: https://x.com/alexlee20122022/status/2115952264393240828
 ---
 
 The clock in your prompt is quietly killing your cache
