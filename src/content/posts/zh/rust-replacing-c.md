@@ -6,6 +6,7 @@ tags: ["Rust", "C", "开源", "Linux"]
 lang: zh
 ogImage: ./comic-systemd-rust-toolchain-wm.png
 translationKey: rust-replacing-c
+xPost: https://x.com/alexlee20122022/status/2115770767497723915
 ---
 
 Rust 替代 C，靠的不是重写

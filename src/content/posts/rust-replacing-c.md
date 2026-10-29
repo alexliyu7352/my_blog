@@ -6,6 +6,7 @@ tags: ["Rust", "C", "Open Source", "Linux"]
 lang: en
 ogImage: ./comic-systemd-rust-toolchain-wm.png
 translationKey: rust-replacing-c
+xPost: https://x.com/alexlee20122022/status/2115770890176876677
 ---
 
 Rust is replacing C by never rewriting it
