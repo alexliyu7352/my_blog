@@ -6,6 +6,7 @@ tags: ["Security", "npm", "Open Source", "GitHub"]
 lang: zh
 ogImage: ./comic-testmetest-worm-wm.png
 translationKey: testmetest-home-directory
+xPost: https://x.com/alexlee20122022/status/2116270266284388584
 ---
 
 你的home目录被删了？先别找入侵者，动手的可能是你自己

@@ -6,6 +6,7 @@ tags: ["Security", "npm", "Open Source", "GitHub"]
 lang: en
 ogImage: ./comic-testmetest-worm-wm.png
 translationKey: testmetest-home-directory
+xPost: https://x.com/alexlee20122022/status/2116270014911414694
 ---
 
 Your home directory got deleted? Don't look for an intruder. It may have been your own hand
