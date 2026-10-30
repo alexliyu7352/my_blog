@@ -6,6 +6,7 @@ tags: ["AI", "版权", "训练数据"]
 lang: zh
 ogImage: ./comic-elvis-robot-witness-wm.png
 translationKey: elvis-training-check
+xPost: https://x.com/alexlee20122022/status/2116017561808646197
 ---
 
 猫王的 274 首歌被拿去训 AI，权利方是怎么查出来的
