@@ -6,6 +6,7 @@ tags: ["Security", "GitHub", "Open Source"]
 lang: zh
 ogImage: ./comic-gheist-keys-wm.png
 translationKey: gheist-stolen-tokens
+xPost: https://x.com/alexlee20122022/status/2116120008304796154
 ---
 
 850 个 GitHub 账号的 token 被盗，13,500 个分支被植入了偷密钥的 workflow

@@ -6,6 +6,7 @@ tags: ["Security", "GitHub", "Open Source"]
 lang: en
 ogImage: ./comic-gheist-keys-wm.png
 translationKey: gheist-stolen-tokens
+xPost: https://x.com/alexlee20122022/status/2116119753467019402
 ---
 
 Tokens from 850 GitHub accounts were stolen, and 13,500 branches were planted with a workflow built to dump repository secrets
