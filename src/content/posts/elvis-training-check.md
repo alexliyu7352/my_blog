@@ -6,6 +6,7 @@ tags: ["AI", "Copyright", "Training Data"]
 lang: en
 ogImage: ./comic-elvis-robot-witness-wm.png
 translationKey: elvis-training-check
+xPost: https://x.com/alexlee20122022/status/2115994930128502795
 ---
 
 274 Elvis songs were used to train AI. Here's how the rights holders found out
