@@ -9,7 +9,7 @@ translationKey: x-algorithm-teardown
 
 The Latest X.com Recommendation Algorithm Code, Decoded and Tested: 'Second Post at 62.5%' Is a Misreading
 
-A quick note on length: this is the full research version — about 75,000 words, every claim checked against the code. If that's too long, start with the guide version I posted on X (the 13 practical rules: https://x.com/alexlee20122022/status/2116710008553447863), or skip straight to the ready-made skills I built from it: https://github.com/alexliyu7352/for-you-skills — the handbook's conclusions, packaged as skills you can call directly.
+A quick note on length: this is the full research version — about 75,000 words, every claim checked against the code. If that's too long, start with the guide version I posted on X (the 13 practical rules: https://x.com/alexlee20122022/status/2116713031002390528), or skip straight to the ready-made skills I built from it: https://github.com/alexliyu7352/for-you-skills — the handbook's conclusions, packaged as skills you can call directly.
 
 Start with a trap everyone steps into daily: a post carries four images. The first is your carefully designed cover (say it reads "the three findings from this test"), and only the fourth image holds the actual results table. Which image do you think the recommendation system's AI reads first?
 
