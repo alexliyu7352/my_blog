@@ -6,6 +6,7 @@ tags: ["AI", "RAG", "Open Source", "Vector Search"]
 lang: zh
 ogImage: ./comic-leann-wm.png
 translationKey: leann-vector-index
+xPost: https://x.com/alexlee20122022/status/2116938909259124932
 ---
 
 6000 万段资料的索引从 201GB 压到 6GB，拿时间换空间这事儿靠谱吗？

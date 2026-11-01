@@ -6,6 +6,7 @@ tags: ["AI", "RAG", "Open Source", "Vector Search"]
 lang: en
 ogImage: ./comic-leann-wm.png
 translationKey: leann-vector-index
+xPost: https://x.com/alexlee20122022/status/2116938791256551803
 ---
 
 LEANN cut a 60-million-passage index from 201GB to 6GB. Is trading disk space for waiting time worth it?
