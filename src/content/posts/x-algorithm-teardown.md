@@ -9,6 +9,8 @@ translationKey: x-algorithm-teardown
 
 The Latest X.com Recommendation Algorithm Code, Decoded and Tested: 'Second Post at 62.5%' Is a Misreading
 
+A quick note on length: this is the full research version — about 75,000 words, every claim checked against the code. If that's too long, start with the guide version I posted on X (the 13 practical rules), or skip straight to the ready-made skills I built from it: https://github.com/alexliyu7352/for-you-skills — the handbook's conclusions, packaged as skills you can call directly.
+
 Start with a trap everyone steps into daily: a post carries four images. The first is your carefully designed cover (say it reads "the three findings from this test"), and only the fourth image holds the actual results table. Which image do you think the recommendation system's AI reads first?
 
 Open the V8.2 content-understanding code (`renderer_v82.py`) in X's public algorithm repo (`xai-org/x-algorithm`), and the `_collect_post_media` function — the one that picks images — gives a blunt answer: it checks the images one by one starting from the first, and **the moment it meets the first image with usable content, it `return`s on the spot (hands back the result and stops; it never reads further down)**. In other words, when all four images open normally, this branch takes only your first cover image. If that cover carries nothing but an empty headline like "the three findings from this test," the core test data in the fourth image never gets sent in at all in this round of image selection. [1](#ref-1)
@@ -2130,7 +2132,7 @@ I hold myself to this more strictly than I advise others. My rule: a published X
 
 Finally, take the next piece's lead image and opening out and look at them alone. The standard I set myself is one line: a reader who doesn't know you and won't open the whole thread, seeing only these two things, can tell what you found and why it concerns him. If it doesn't reach that, fix it before publishing.
 
-I'll keep revising this handbook as X's public code updates. This blog doesn't chase hot topics; it holds only things I've taken apart and verified with my own hands, across the three lines of AI, security, and open source. If this piece helped you, feel free to subscribe or bookmark it — you'll see the next update the moment it lands.
+I'll keep tracking the algorithm repo, and whenever it updates I'll revise this handbook and update the skills repo (https://github.com/alexliyu7352/for-you-skills) in sync, so what you've bookmarked stays current. This blog doesn't chase hot topics; it holds only things I've taken apart and verified with my own hands, across the three lines of AI, security, and open source. If this piece helped you, feel free to subscribe or bookmark it — you'll see the next update the moment it lands.
 
 ## Open Questions (Plain-Language Full Explanation of the 49 Items: "Truths the Code Confirms vs. Blind Spots Still to Check Online")
 
