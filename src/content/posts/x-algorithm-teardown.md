@@ -609,7 +609,18 @@ Creators in tech, overseas business, and open source often ask me a very practic
 
 Combine what we just covered — reader history-sequence matching (`query.user_id`), the same-author `0.625` decay, V8.2's 4,000-character truncation, and the PTOS English-only safety rule coming in Chapter 28 — and we can compute exactly what each approach meets in the code:
 
-#### 9.1.1 Approach A: one post, "Chinese on top, English below," mixed together
+#### 9.1.1 Approach B: split into "one pure-Chinese post" + "one pure-English post"
+
+**The short answer first: publishing the same content as a separate pure-Chinese post and a pure-English post is completely fine — for long pieces, it is the right way to do it.** What it actually meets in the code:
+
+1. **For single-language readers (the vast majority): the two versions travel to their own reader groups.**
+Don't forget the core mechanism just covered: the Phoenix recall model reads **the current reader's own behavior history sequence (`query.user_id`)**.
+- For Zhang San, who mostly scrolls the Chinese circle, his recall sequence pulls only your **pure-Chinese version** into his temporary basket; the English version never enters his pool — so by the same-author multiplier's math, the Chinese version's slot is not taken by the English version in Zhang San's basket;
+- For John, a foreign reader who mostly scrolls the English circle, his recall sequence pulls only your **pure-English version** in — so by the same math, the English version's slot isn't taken by the Chinese version in John's basket either. Neither side eats the other's slot — that's inferred from the recall and counting mechanisms; whether production behaves exactly this way, there are no logs to prove. [31](#ref-31)
+2. **For bilingual readers and followers who already follow you: posting back-to-back means same-pool competition.**
+If you fire the pure-Chinese and pure-English versions one right after the other in the same minute, then for followers of yours (`Thunder`'s follow feed grabs both of your fresh posts by your `author_id`) and for readers who scroll both languages, the two posts land in the same temporary basket under one `author_id`. The one seated second eats the **`0.625` same-author decay** — and where the cross-language semantics overlap heavily, they may also compete inside DPP diversity selection (`dpp_model.rs`). [2](#ref-2) [85](#ref-85)
+
+#### 9.1.2 Approach A: one post, "Chinese on top, English below," mixed together
 
 1. **Is there a "mixed-language penalty"? No.**
 Nowhere in the public code is there a rule like "detect mixed languages, deduct a fixed amount." Language identification is just one ordinary feature fed to the model. [31](#ref-31)
@@ -619,20 +630,10 @@ In Chapter 17 we'll see that the V8.2 content-understanding processor (`renderer
 - **Pit two: the English-only automated review rule (`FOSNR_ABUSE_INSULTS`).**
 In Chapter 28's safety rules there's a hard line of code: in the Grox PTOS auto-labeling path (Grox is X's internal AI system for understanding content; PTOS is the part of it that handles safety review and labels rule-breaking content), the classification `HateOrAbuseInsultsWithTarget` (targeted insult/attack) explicitly requires **that the post's language be recognized as English** before it auto-writes the `FOSNR_ABUSE_INSULTS` restriction label for accounts that are not high-PageRank (PageRank = a weight score the system computes for an account based on its influence — the higher the score, the more the account is treated as a big account, and many exemptions later in this piece key off it) and not gray-badge (a gray badge is the gray verification check for government and institution accounts, not the blue badge you pay for) (blocking all stranger recommendations in `HomeRecommendations`). If you're writing a sharp product review or criticism, then by this path's conditions one can infer: if a bilingual post's language gets recognized as English and the wording is aggressive, it's easier to hit this auto-labeling line. How language is actually determined, the code doesn't state for bilingual posts. [77](#ref-77)
 
-#### 9.1.2 Approach B: split into "one pure-Chinese post" + "one pure-English post"
-
-1. **For single-language readers (the vast majority): the two versions travel to their own reader groups.**
-Don't forget the core mechanism just covered: the Phoenix recall model reads **the current reader's own behavior history sequence (`query.user_id`)**.
-- For Zhang San, who mostly scrolls the Chinese circle, his recall sequence pulls only your **pure-Chinese version** into his temporary basket; the English version never enters his pool — so by the same-author multiplier's math, the Chinese version's slot is not taken by the English version in Zhang San's basket;
-- For John, a foreign reader who mostly scrolls the English circle, his recall sequence pulls only your **pure-English version** in — so by the same math, the English version's slot isn't taken by the Chinese version in John's basket either. Neither side eats the other's slot — that's inferred from the recall and counting mechanisms; whether production behaves exactly this way, there are no logs to prove. [31](#ref-31)
-2. **For bilingual readers and followers who already follow you: posting back-to-back means same-pool competition.**
-If you fire the pure-Chinese and pure-English versions one right after the other in the same minute, then for followers of yours (`Thunder`'s follow feed grabs both of your fresh posts by your `author_id`) and for readers who scroll both languages, the two posts land in the same temporary basket under one `author_id`. The one seated second eats the **`0.625` same-author decay** — and where the cross-language semantics overlap heavily, they may also compete inside DPP diversity selection (`dpp_model.rs`). [2](#ref-2) [85](#ref-85)
-
 #### 9.1.3 So how should multilingual publishing be done?
 
-- **For short updates of two or three hundred characters, or short image posts** (Chinese plus English nowhere near 4,000 characters total): post them stacked in one post; it's convenient and the interaction concentrates in one place;
 - **For technical long-form of thousands of characters, deep reviews, or tutorials**: **split into a "pure-Chinese post" and a "pure-English post" and publish separately — and space the two releases about half a day apart (the code specifies no exact interval)** (for example, post the Chinese version at Beijing noon, then the English version at Beijing midnight, during Europe and America's daytime peak) — that way each version uses its full V8.2 4,000-character semantic allowance, matches strangers in its own language, and mostly avoids bilingual followers' refresh windows, so the two long posts don't fight each other inside one temporary basket.
-
+- **For short updates of two or three hundred characters, or short image posts** (Chinese plus English nowhere near 4,000 characters total): post them stacked in one post; it's convenient and the interaction concentrates in one place;
 ## 10 Reading signals are already useful while candidates are being found
 
 Many creators of technical tutorials and data compilations feel aggrieved: "I spent three days building a test comparison table. Readers finish it, save the image, and use it; the replies are quiet, hardly anyone argues. Does the algorithm think nobody loves my post?"
