@@ -6,6 +6,7 @@ tags: ["AI", "Publishing", "Web Standards"]
 lang: en
 ogImage: ./comic-aipref-sign-wm.png
 translationKey: ai-training-opt-out-robots-txt
+xPost: https://x.com/alexlee20122022/status/2117061111325310986
 ---
 
 One robots.txt line to refuse AI training, and no single start date
