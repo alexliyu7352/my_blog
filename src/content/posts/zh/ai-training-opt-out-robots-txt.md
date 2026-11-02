@@ -6,6 +6,7 @@ tags: ["AI", "Publishing", "Web Standards"]
 lang: zh
 ogImage: ./comic-aipref-sign-wm.png
 translationKey: ai-training-opt-out-robots-txt
+xPost: https://x.com/alexlee20122022/status/2117161768749310143
 ---
 
 一句话就能拒绝 AI 训练，只是各家开始认它的时间都不一样
