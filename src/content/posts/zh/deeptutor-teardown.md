@@ -6,6 +6,7 @@ tags: ["AI", "开源", "教育"]
 lang: zh
 ogImage: ./comic-deeptutor-memory-wm.png
 translationKey: deeptutor-teardown
+xPost: https://x.com/alexlee20122022/status/2117565960903368840
 ---
 
 港大一个开源 AI 家教，仓库建起来第 4 天就有 1,369 星。十个月后逼近 5.4 万，其中 5,700 多是最近四天涨的。我 10 月 28 号把它的 v1.7.0 装上真跑了一遍，稿子还没写完，10 月 31 号，v1.7.1 又发布了。
