@@ -6,6 +6,7 @@ tags: ["AI", "Open Source", "Education"]
 lang: en
 ogImage: ./comic-deeptutor-memory-wm.png
 translationKey: deeptutor-teardown
+xPost: https://x.com/alexlee20122022/status/2117809748443853274
 ---
 
 An open-source AI tutor out of the University of Hong Kong had 1,369 stars four days after its repository was created. Ten months later it is at nearly 54,000, and more than 5,000 of those arrived in the last four days alone. On October 28 I installed its v1.7.0 release and took it apart. Before the write-up was finished, v1.7.1 landed on October 31.
