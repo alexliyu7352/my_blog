@@ -6,6 +6,7 @@ tags: ["AI", "开源", "大模型", "Agent"]
 lang: zh
 ogImage: ./comic-xputty-router-wm.png
 translationKey: xputty-shadow-core-teardown
+xPost: https://x.com/alexlee20122022/status/2117790534811136020
 ---
 
 我照规格复刻了一个 1.47 MB、76 万参数的 agent 意图路由器，跟 if 判断比赛，它输了

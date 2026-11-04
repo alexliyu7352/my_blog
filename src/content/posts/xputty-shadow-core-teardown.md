@@ -6,6 +6,7 @@ tags: ["AI", "Open Source", "LLM", "Agents"]
 lang: en
 ogImage: ./comic-xputty-router-wm.png
 translationKey: xputty-shadow-core-teardown
+xPost: https://x.com/alexlee20122022/status/2117781278648905904
 ---
 
 I rebuilt a 1.47 MB, 761,000-parameter intent router and raced it against if statements. The if statements won
