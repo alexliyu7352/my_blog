@@ -17,8 +17,6 @@ The model is called Xputty Shadow Core 0.1. It is an intent router: it reads one
 
 We think a small intent router like this is worth having, so we built one to the specs the post published and raced it against a set of keyword rules. The result: on phrasings it had seen in training, both scored 100%. On phrasings it had never seen, the rules scored 63% and our rebuild scored 42%.
 
-![A tiny robot traffic cop on a matchbox waves a stop sign at the keyword-rules scoreboard](comic-xputty-router-wm.png)
-
 ## Why we want an intent router this small
 
 Every sentence you say to an assistant passes through the same small judgment before anything happens. You say "set a timer for ten minutes" and it has to know that is a timer. You say "check tomorrow's weather in Denver" and it has to know that is weather. You say "open the spreadsheet I edited yesterday" and it has to know that is opening a file.
@@ -100,7 +98,6 @@ Real people use far more frames than a template set has. Faced with a frame it h
 The rules win on exactly this point. When people rephrase, the words that carry the meaning usually stay put: timer, alarm, weather, call. Keyword rules score only those words, and the frame around them does not matter to them.
 
 This race measured our rebuild. The training data was the 5,120 sentences we generated from templates ourselves, and the reading was whole-word. The file in the post may be trained far better than ours, and none of this result lands on it.
-
 
 ## How to train a router like this properly
 
