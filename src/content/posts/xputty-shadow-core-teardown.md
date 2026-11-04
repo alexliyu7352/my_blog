@@ -97,7 +97,7 @@ The second reason is where the training data came from. All 5,120 sentences come
 
 Real people use far more frames than a template set has. Faced with a frame it had never seen, it has very few words to hold on to. What it learned was our template-writing habits, not how a person turns a sentence into an intent.
 
-The rules win on exactly this point. When people rephrase, the words that carry the meaning usually stay put: timer, alarm, weather, call. Keyword rules score only those words, and the frame around them does not matter to them. This is the difference behind the second group's 21-point gap.
+The rules win on exactly this point. When people rephrase, the words that carry the meaning usually stay put: timer, alarm, weather, call. Keyword rules score only those words, and the frame around them does not matter to them.
 
 This race measured our rebuild. The training data was the 5,120 sentences we generated from templates ourselves, and the reading was whole-word. The file in the post may be trained far better than ours, and none of this result lands on it.
 
