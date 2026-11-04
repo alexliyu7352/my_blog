@@ -6,6 +6,7 @@ tags: ["AI", "开源", "GitHub"]
 lang: zh
 ogImage: ./comic-agentic-workflows-v2-wm.png
 translationKey: github-agentic-workflows
+xPost: https://x.com/alexlee20122022/status/2117949836834349145
 ---
 
 10 月 28 日，GitHub 把 Agentic Workflows 正式开放了。用法说起来很简单：你不用再亲手写 Actions 的 YAML 文件，换成写一个 Markdown 文件，用平时说话的话把要它做的事情写下来，GitHub 会把这个文件转成标准的 Actions 流程，agent 就在流程里面照着做。
