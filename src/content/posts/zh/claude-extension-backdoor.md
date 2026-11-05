@@ -6,6 +6,7 @@ tags: ["AI", "安全", "开源"]
 lang: zh
 ogImage: ./cover-claude-extension.webp
 translationKey: claude-extension-backdoor
+xPost: https://x.com/alexlee20122022/status/2118228043453890630
 ---
 
 10 月 29 日，Cursor 应用市场里的 Claude Code 扩展有两个版本被人换了芯。2.1.312 和 2.1.313 挂着 Anthropic 的认证账号和名字上架，真正的扩展代码前面塞着一段 66 行的加载器，编辑器一打开它就先跑。这两个版本在市场里待了大约 11 个小时，Cursor 在 X 上说最多 5000 名用户装到或更新到了它们。

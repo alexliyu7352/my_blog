@@ -6,6 +6,7 @@ tags: ["AI", "security", "open source"]
 lang: en
 ogImage: ./cover-claude-extension.webp
 translationKey: claude-extension-backdoor
+xPost: https://x.com/alexlee20122022/status/2118396496370598225
 ---
 
 On October 29, two builds of the Claude Code extension in Cursor's marketplace were swapped for tampered ones. Versions 2.1.312 and 2.1.313 went up under Anthropic's verified account and name, with a 66-line loader inserted ahead of the real extension code, and the loader ran as soon as the editor opened. The two builds were available for about 11 hours, and Cursor said on X that at most 5,000 users installed or updated to them.
