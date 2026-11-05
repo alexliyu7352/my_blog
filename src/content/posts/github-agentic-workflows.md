@@ -6,6 +6,7 @@ tags: ["AI", "Open Source", "GitHub"]
 lang: en
 ogImage: ./comic-agentic-workflows-v2-wm.png
 translationKey: github-agentic-workflows
+xPost: https://x.com/alexlee20122022/status/2118146677475340677
 ---
 
 GitHub made Agentic Workflows generally available on October 28. The idea is simple to describe. Instead of writing Actions YAML by hand, you write a Markdown file that says, in ordinary words, what you want done. GitHub turns that file into a standard Actions workflow, and an agent runs inside it. It sorts new issues, reads failed CI runs, keeps documentation current, and drafts tests. It works on the Free, Team, and Enterprise plans. If the workflow runs on the default Copilot engine, you need a Copilot licence as well.
