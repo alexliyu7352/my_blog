@@ -6,6 +6,7 @@ tags: ["AI", "安全", "开源"]
 lang: zh
 ogImage: ./cover-kill-switch.webp
 translationKey: crowdstrike-ai-kill-switch
+xPost: https://x.com/alexlee20122022/status/2118660301327335804
 ---
 
 11 月 3 号，CrowdStrike 在巴塞罗那的 Fal.Con Europe 大会上发布了 AI 急停开关，装在它的 Falcon Guardian 里。Falcon Guardian 是它用来发现和管理一家公司里在跑的 agent 的系统。官方的说法是，agent 跑偏的时候，安全管理员可以先把它停掉，再不让它重新启动，最后断掉它访问企业网络的路。听上去，装上这个产品，开关就在手边了。
