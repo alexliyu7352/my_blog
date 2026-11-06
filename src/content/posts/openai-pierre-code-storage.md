@@ -6,6 +6,7 @@ tags: ["AI", "open source", "developer tools"]
 lang: en
 ogImage: ./cover-pierre.webp
 translationKey: openai-pierre-code-storage
+xPost: https://x.com/alexlee20122022/status/2118750563773091906
 ---
 
 Quick terms first. Git is the tool that records every change to a codebase, so a change that breaks things can be rolled back. A repository is one project's ledger of those changes. Hosting means keeping that ledger on a server where everyone can reach it, and GitHub is the biggest host there is. An agent is an AI program that takes a task, writes code and hands the code back. Codex is OpenAI's coding agent, and it comes in two forms: one that runs on your own computer, and one where you hand it tasks on the web and OpenAI's servers do the running. This post keeps the two apart.
