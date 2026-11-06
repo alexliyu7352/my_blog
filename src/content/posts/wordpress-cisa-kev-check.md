@@ -6,6 +6,7 @@ tags: ["security", "open source"]
 lang: en
 ogImage: ./cover-wordpress-kev.webp
 translationKey: wordpress-cisa-kev-check
+xPost: https://x.com/alexlee20122022/status/2118781552171811318
 ---
 
 WordPress shipped the patch a week ago. CISA, the Cybersecurity and Infrastructure Security Agency, has told federal agencies to patch this flaw and then check whether anyone already got in. That order was written for federal agencies, so it does not bind you, but the check it asks for is still worth running on your own site.
