@@ -6,6 +6,7 @@ tags: ["AI", "开源", "开发工具"]
 lang: zh
 ogImage: ./cover-pierre.webp
 translationKey: openai-pierre-code-storage
+xPost: https://x.com/alexlee20122022/status/2118633257671495876
 ---
 
 先交代一句词：git 是管理代码版本的工具，把每一次改动记下来，改坏了能退回去；仓库是一个项目的改动账本；托管是把账本放到服务器上供大家取用的服务，GitHub 是最大的一家；agent 是能自己接活、写代码、交代码的 AI 程序；Codex 是 OpenAI 的编程 agent，它有两种模式，一种装在你自己电脑上运行，另一种在网页上派活、由 OpenAI 的服务器运行，下文分开讲。
