@@ -6,6 +6,7 @@ tags: ["AI", "security", "open source"]
 lang: en
 ogImage: ./cover-kill-switch.webp
 translationKey: crowdstrike-ai-kill-switch
+xPost: https://x.com/alexlee20122022/status/2118772989147717703
 ---
 
 On November 3, at its Fal.Con Europe conference in Barcelona, CrowdStrike launched an AI Kill Switch inside Falcon Guardian, its system for finding and governing the AI agents running across a company. The pitch is simple: when an agent goes off course, a security admin can terminate it, block it from launching again, and cut off its access to the enterprise network. It sounds like you install the product and the switch is just there, ready to press.
