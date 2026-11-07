@@ -6,6 +6,7 @@ tags: ["security", "open source"]
 lang: en
 ogImage: ./cover-alpine-openssh.webp
 translationKey: alpine-openssh-password-bypass
+xPost: https://x.com/alexlee20122022/article/2119118361883992110
 ---
 
 A password field with no password set is meant to keep every password out. But type a 300-character password at an account like that on Alpine, and sshd lets you in, whatever characters you chose. How many accounts on your own Alpine machines have no password set, and is password login still switched on for them?

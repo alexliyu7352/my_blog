@@ -6,6 +6,7 @@ tags: ["安全", "开源"]
 lang: zh
 ogImage: ./cover-alpine-openssh.webp
 translationKey: alpine-openssh-password-bypass
+xPost: https://x.com/alexlee20122022/article/2119043823389098422
 ---
 
 四十多年来，密码栏位里没设密码的账号，一直是输什么密码都进不去的。你自己的 Alpine 机器上，现在还有几个没设密码的账号？密码登录还开着吗？
