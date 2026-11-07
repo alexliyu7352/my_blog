@@ -6,6 +6,7 @@ tags: ["安全", "开源"]
 lang: zh
 ogImage: ./cover-wordpress-kev.webp
 translationKey: wordpress-cisa-kev-check
+xPost: https://x.com/alexlee20122022/status/2118886286991786012
 ---
 
 CISA 是美国网络安全和基础设施安全局。它在 11 月 3 日要求联邦机构把这个漏洞补上，而且补完之后还要再查一遍，看有没有人已经进来过。
