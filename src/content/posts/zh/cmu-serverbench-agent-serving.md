@@ -6,6 +6,7 @@ tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-serverbench.webp
 translationKey: cmu-serverbench-agent-serving
+xPost: https://x.com/alexlee20122022/status/2119248546478326270
 ---
 
 11 月 4 日，CMU 的研究者在 arXiv 上发了一个叫 ServerBench 的新基准。假设你正跑着一套推理服务系统，有人拿一套 agent 设计的版本放到你面前，说它比你现在用的还强。你敢不验一遍，就直接换到线上吗？

@@ -6,6 +6,7 @@ tags: ["ai", "open source"]
 lang: en
 ogImage: ./cover-serverbench.webp
 translationKey: cmu-serverbench-agent-serving
+xPost: https://x.com/alexlee20122022/status/2119163005229260897
 ---
 
 On November 4, researchers at CMU posted a new benchmark on arXiv called ServerBench. Say you run an inference serving system yourself, and someone puts an agent-designed version in front of you and says it beats what you run now. Would you swap it into production without checking it first?
