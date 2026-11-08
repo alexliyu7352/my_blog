@@ -5,6 +5,7 @@ description: "Vercel's agent-desktop lets an agent run your computer by reading 
 tags: ["ai", "open source"]
 lang: en
 ogImage: ./cover-agent-desktop.webp
+xPost: https://x.com/alexlee20122022/status/2119180520563384412
 translationKey: vercel-agent-desktop-accessibility-tree
 ---
 

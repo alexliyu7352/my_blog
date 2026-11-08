@@ -5,6 +5,7 @@ description: "Vercel 的 agent-desktop 让 agent 不靠截图猜按钮，而是�
 tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-agent-desktop.webp
+xPost: https://x.com/alexlee20122022/status/2119263659243303019
 translationKey: vercel-agent-desktop-accessibility-tree
 ---
 
