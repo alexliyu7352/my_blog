@@ -6,10 +6,11 @@ import Footer from "@/components/Footer.astro";
 import Socials from "@/components/Socials.astro";
 import Card from "@/components/Card.astro";
 import LinkButton from "@/components/LinkButton.astro";
+import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { getSortedPosts } from "@/utils/getSortedPosts";
 import config from "@/config";
 
-const { socials } = config;
+const { socials, posts: postsConfig } = config;
 
 const posts = await getCollection("posts");
 const zhPosts = getSortedPosts(posts).filter(({ data }) => data.lang === "zh");
@@ -75,13 +76,20 @@ const recentPosts = zhPosts.filter(({ data }) => !data.featured);
         <section id="recent-posts" class="pt-12 pb-6">
           <h2 class="text-2xl font-semibold tracking-wide">最新文章</h2>
           <ul>
-            {recentPosts.map(data => (
+            {recentPosts.slice(0, postsConfig.perIndex).map(data => (
               <Card variant="h3" {...data} />
             ))}
           </ul>
         </section>
       )
     }
+
+    <div class="my-8 text-center">
+      <LinkButton href="/zh/posts/">
+        全部文章
+        <IconArrowRight class="inline-block rtl:-rotate-180" />
+      </LinkButton>
+    </div>
   </main>
   <Footer />
 </Layout>

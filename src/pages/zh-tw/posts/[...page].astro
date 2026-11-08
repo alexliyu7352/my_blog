@@ -1,0 +1,40 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Main from "@/components/Main.astro";
+import Card from "@/components/Card.astro";
+import Footer from "@/components/Footer.astro";
+import Pagination from "@/components/Pagination.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+import config from "@/config";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getCollection(
+    "posts",
+    ({ data }) => !data.draft && data.lang === "zh-tw"
+  );
+  return paginate(getSortedPosts(posts), { pageSize: config.posts.perPage });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Layout
+  htmlLang="zh-TW"
+  title={`文章 | AI擺渡人 Alex`}
+  description="AI擺渡人 Alex 的全部繁體中文長文：AI 開發實戰、開源動態、基礎設施與安全。繁體版由簡體版經 OpenCC 自動轉換生成。"
+>
+  <Header />
+
+  <Main pageTitle="文章" pageDesc="我發過的全部文章。">
+    <ul>
+      {page.data.map(data => <Card {...data} />)}
+    </ul>
+  </Main>
+
+  <Pagination {page} />
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>
