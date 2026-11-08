@@ -6,7 +6,7 @@ tags: ["security", "open source"]
 lang: en
 ogImage: ./cover-systemhelper.webp
 translationKey: systemhelper-unicom-report
-xPost: ""
+xPost: https://x.com/alexlee20122022/status/2119507640330121434
 ---
 
 On October 31, a developer named MeT posted that his friend had received a phone call from local police telling him to uninstall the apps X and Telegram from his phone. MeT investigated the phone because of that call, and the investigation led him to a system component that had shipped with the phone. The component bundles a report of which apps the phone used in the past 24 hours, and for how long, and sends that report to China Unicom's servers.
