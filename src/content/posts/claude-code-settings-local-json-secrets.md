@@ -6,6 +6,7 @@ tags: ["security", "open source"]
 lang: en
 ogImage: ./cover-claude-code-secrets.webp
 translationKey: claude-code-settings-local-json-secrets
+xPost: https://x.com/alexlee20122022/status/2119481770173399314
 ---
 
 Have you ever clicked "Yes, and don't ask again" in Claude Code? If the command you approved that time carried a password, then your password may be sitting in a public repository right now. This week the security company Apiiro searched GitHub for one filename, .claude/settings.local.json, and pulled up 104,185 copies. In 1,122 of them there is at least one real secret, and together they hold 1,379 secrets.

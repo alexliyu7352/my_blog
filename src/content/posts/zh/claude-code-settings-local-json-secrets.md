@@ -6,6 +6,7 @@ tags: ["安全", "开源"]
 lang: zh
 ogImage: ./cover-claude-code-secrets.webp
 translationKey: claude-code-settings-local-json-secrets
+xPost: https://x.com/alexlee20122022/status/2119304328607334411
 ---
 
 你在 Claude Code 里点过「Yes, and don't ask again」吗？要是点过，而且你当时批准的那条命令里带着密码，那么你的密码有可能就在这 1,122 份文件里面。
