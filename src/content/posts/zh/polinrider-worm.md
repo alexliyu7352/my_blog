@@ -6,6 +6,7 @@ tags: ["安全", "开源"]
 lang: zh
 ogImage: ./cover-polinrider.webp
 translationKey: polinrider-worm
+xPost: https://x.com/alexlee20122022/status/2119352759635919299
 ---
 
 10 月 29 号早上，一个叫 Ridham Parmar 的工程师打开 GitHub，发现自己的账号在一夜之间往 9 个仓库里强推了 99 个分支。推送发生在凌晨 0 点 33 分到 0 点 49 分之间，那会儿他正在睡觉。每一笔提交都留着他的名字、他写的提交信息和原来的日期。你上一次检查自己的账号有没有替你推过你没推过的东西，是什么时候？

@@ -6,6 +6,7 @@ tags: ["security", "open source"]
 lang: en
 ogImage: ./cover-polinrider.webp
 translationKey: polinrider-worm
+xPost: https://x.com/alexlee20122022/status/2119520613312381402
 ---
 
 On the morning of October 29, an engineer named Ridham Parmar opened GitHub and found that 99 branches across 9 repositories had been force-pushed from his account. The pushes happened between 00:33 and 00:49, while he was asleep, and every commit kept his name, his message, and its original date. When did you last check whether your own account pushed something you never pushed?
