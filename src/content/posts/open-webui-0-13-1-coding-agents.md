@@ -6,6 +6,7 @@ tags: ["open source", "ai agents"]
 lang: en
 ogImage: ./cover-open-webui-0-13-1.webp
 translationKey: open-webui-0-13-1-coding-agents
+xPost: "https://x.com/alexlee20122022/status/2119851162253816056"
 ---
 
 I have worked in full stack development for more than 24 years. When I read a tool update, I look first at where the work runs, and then I look at who can stop that work when something goes wrong. Measured by those two yardsticks, here is my verdict on 0.13.1 up front.

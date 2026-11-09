@@ -6,6 +6,7 @@ tags: ["开源", "AI"]
 lang: zh
 ogImage: ./cover-open-webui-0-13-1.webp
 translationKey: open-webui-0-13-1-coding-agents
+xPost: "https://x.com/alexlee20122022/status/2119803122386395491"
 ---
 
 我做全栈开发已经 24 年多了。看工具更新的时候，我先看工作在哪台机器上做，再看出了问题由谁喊停。按这两把尺子量 0.13.1，我的判断先放在这里。
