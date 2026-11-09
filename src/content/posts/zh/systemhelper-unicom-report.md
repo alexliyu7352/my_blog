@@ -6,7 +6,7 @@ tags: ["安全", "开源"]
 lang: zh
 ogImage: ./cover-systemhelper.webp
 translationKey: systemhelper-unicom-report
-xPost: ""
+xPost: "https://x.com/alexlee20122022/status/2119642888065708066"
 ---
 
 10 月 31 日，开发者 MeT 发帖说了一件事：他朋友接到当地公安的电话，对方要求他把手机里的 X 和 Telegram 卸掉。MeT 顺着这通电话往下查，查到的不是哪个 App 漏了信息，而是他朋友手机里一个出厂就装好的系统组件。这个组件会把他朋友这台手机过去 24 小时用过哪些应用、每个应用用了多久，一起打包发往中国联通的服务器。
