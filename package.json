@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/gen-zh-tw.mjs && astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/",
+    "build": "node scripts/gen-zh-tw.mjs && astro check && astro build && node scripts/gen-tag-redirects.mjs && pagefind --site dist && cp -r dist/pagefind public/",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
