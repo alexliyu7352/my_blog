@@ -6,6 +6,7 @@ tags: ["security", "open source"]
 lang: en
 ogImage: ./cover-skillscan.webp
 translationKey: skillscan-skillspector-study
+xPost: https://x.com/alexlee20122022/status/2119846291438244208
 ---
 
 Think about the last skill you installed. Did you open its instruction file and read the whole thing first, or did the short description on the marketplace page convince you on its own? I always do the reading first. A skill can look tiny and harmless on its listing page, and I still read every line of its instructions before I decide whether it goes any further on my machine.
