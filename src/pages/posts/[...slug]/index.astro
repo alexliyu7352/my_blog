@@ -219,7 +219,22 @@ const ogImage = ogImageUrl
     <BackToTopButton />
 
     <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8">
-      {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} size="sm" />)}
+      {
+        tags.map(tag => (
+          <Tag
+            tag={slugifyStr(tag)}
+            tagName={tag}
+            size="sm"
+            hrefBase={
+              postLang === "zh"
+                ? "/zh/tags/"
+                : postLang === "zh-tw"
+                  ? "/zh-tw/tags/"
+                  : "/tags/"
+            }
+          />
+        ))
+      }
     </ul>
 
     <div class="xl:hidden">

@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Main from "@/components/Main.astro";
+import Footer from "@/components/Footer.astro";
+import Tag from "@/components/Tag.astro";
+import { getUniqueTags } from "@/utils/getUniqueTags";
+
+const posts = await getCollection(
+  "posts",
+  ({ data }) => !data.draft && data.lang === "zh"
+);
+const tags = getUniqueTags(posts);
+---
+
+<Layout
+  htmlLang="zh-CN"
+  title={`标签 | AI摆渡人 Alex`}
+  description="AI摆渡人 Alex 简体中文文章的全部标签。"
+>
+  <Header />
+
+  <Main pageTitle="标签" pageDesc="简体中文文章用到的全部标签。">
+    <ul class="flex flex-wrap gap-6">
+      {
+        tags.map(({ tag, tagName }) => (
+          <Tag {tag} {tagName} hrefBase="/zh/tags/" />
+        ))
+      }
+    </ul>
+  </Main>
+
+  <Footer />
+</Layout>

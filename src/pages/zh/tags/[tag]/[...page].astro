@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPathsOptions } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Main from "@/components/Main.astro";
+import Card from "@/components/Card.astro";
+import Footer from "@/components/Footer.astro";
+import Pagination from "@/components/Pagination.astro";
+import { getUniqueTags } from "@/utils/getUniqueTags";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+import { slugifyAll } from "@/utils/slugify";
+import config from "@/config";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = await getCollection(
+    "posts",
+    ({ data }) => !data.draft && data.lang === "zh"
+  );
+  const tags = getUniqueTags(posts);
+
+  return tags.flatMap(({ tag, tagName }) => {
+    const tagPosts = getSortedPosts(
+      posts.filter(({ data }) => slugifyAll(data.tags).includes(tag))
+    );
+
+    return paginate(tagPosts, {
+      params: { tag },
+      props: { tagName },
+      pageSize: config.posts.perPage,
+    });
+  });
+}
+
+const { page, tagName } = Astro.props;
+---
+
+<Layout
+  htmlLang="zh-CN"
+  title={`标签: ${tagName} | AI摆渡人 Alex`}
+  description={`AI摆渡人 Alex 全部带「${tagName}」标签的简体中文文章。`}
+>
+  <Header />
+
+  <Main pageTitle={`标签: ${tagName}`} pageDesc={`全部带「${tagName}」标签的文章。`}>
+    <ul>
+      {page.data.map(data => <Card {...data} />)}
+    </ul>
+  </Main>
+
+  <Pagination {page} />
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>
