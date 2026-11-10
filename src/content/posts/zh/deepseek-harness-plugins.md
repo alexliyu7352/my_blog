@@ -6,6 +6,7 @@ tags: ["开源", "AI"]
 lang: zh
 ogImage: ./cover-deepseek-harness.webp
 translationKey: deepseek-harness-plugins
+xPost: "https://x.com/alexlee20122022/status/2120150516936180058"
 ---
 
 11 月 4 日那天，有 154 万人打开了 DeepSeek Harness。不管你用的是哪个 agent 助手，里面有多少功能是别人写的插件？
