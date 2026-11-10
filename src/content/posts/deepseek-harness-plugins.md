@@ -6,6 +6,7 @@ tags: ["ai agents", "open source"]
 lang: en
 ogImage: ./cover-deepseek-harness.webp
 translationKey: deepseek-harness-plugins
+xPost: https://x.com/alexlee20122022/status/2120227648932835688
 ---
 
 On November 4, 1.54 million people opened DeepSeek Harness. Whatever AI assistant you use, how much of what it does for you comes from plugins someone else wrote?
