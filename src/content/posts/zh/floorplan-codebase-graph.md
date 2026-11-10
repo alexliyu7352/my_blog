@@ -6,6 +6,7 @@ tags: ["开源", "AI"]
 lang: zh
 ogImage: ./cover-floorplan.webp
 translationKey: floorplan-codebase-graph
+xPost: https://x.com/alexlee20122022/status/2120097554289348825
 ---
 
 那天我把 pytest 自己的仓库交给几个 agent 会话轮流去改。因为我想看一看，像 floorplan 这种给仓库留记录的工具，到了晚上收工的时候，到底还能剩下多少账可以对。四件事做完之后，它完整记住的只有一件。
