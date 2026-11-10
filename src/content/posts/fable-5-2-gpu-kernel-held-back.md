@@ -6,6 +6,7 @@ tags: ["ai agents", "ai safety"]
 lang: en
 ogImage: ./cover-fable-5-2.webp
 translationKey: fable-5-2-gpu-kernel-held-back
+xPost: "https://x.com/alexlee20122022/status/2120276220931645444"
 ---
 
 Have you ever seen a line in Claude Code telling you that a different model answered you this time? On November 9, Anthropic released Fable 5.2 and Mythos 5.2, and behind the two names sits one and the same model.
