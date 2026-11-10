@@ -6,6 +6,7 @@ tags: ["open source", "ai agents"]
 lang: en
 ogImage: ./cover-floorplan.webp
 translationKey: floorplan-codebase-graph
+xPost: https://x.com/alexlee20122022/status/2120225641396343012
 ---
 
 That day I handed pytest's own repository over to several agent sessions and let them take turns changing it. Because I wanted to see how much of the record a tool like floorplan, which keeps records for a repository, would still have left to reconcile when wrapping up in the evening. After four things were done, it had fully remembered only one thing.
