@@ -6,6 +6,7 @@ tags: ["open source", "ai agents"]
 lang: en
 ogImage: ./cover-meta-astryx.webp
 translationKey: meta-astryx-agent-friendly-components
+xPost: https://x.com/alexlee20122022/status/2120250396132438371
 ---
 
 When was the last time you asked an agent to build a page and it got it right on the first try? Meta just open-sourced a design system called Astryx. It ran inside Meta for eight years, powering more than 13,000 apps. What sets it apart is not how many components it ships, but that people and agents build interfaces with the same set of tools.
