@@ -6,6 +6,7 @@ tags: ["ai agents", "llm"]
 lang: en
 ogImage: ./cover-meta-ember.webp
 translationKey: meta-ember-cost-per-task
+xPost: "https://x.com/alexlee20122022/status/2120375671775973380"
 ---
 
 When you choose a model for an agent, do you look first at the price list per million tokens, or do you first work out how much it costs to run one task to completion? The two questions differ only in how they are phrased, but the answer about which model is cheaper can differ severalfold.
