@@ -6,6 +6,7 @@ tags: ["AI", "智能体"]
 lang: zh
 ogImage: ./cover-meta-ember.webp
 translationKey: meta-ember-cost-per-task
+xPost: "https://x.com/alexlee20122022/status/2120359539320946943"
 ---
 
 你给 agent 挑模型的时候，是先看每百万 token 的价目表，还是先算一个任务跑完要花多少钱？这两个问法只差一句话，可是算出来的贵贱能差出好几倍。
