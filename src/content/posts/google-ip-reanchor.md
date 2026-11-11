@@ -6,6 +6,7 @@ tags: ["open source", "security"]
 lang: en
 ogImage: ./cover-google-ip-reanchor-en.png
 translationKey: google-ip-reanchor
+xPost: "https://x.com/alexlee20122022/status/2120601773442249069"
 ---
 
 A friend of mine has a VPS in Fremont, California, and its IP is a US IP, but Google has judged that IP to be in mainland China. Once an IP is judged to be in mainland China, Gemini opens with a message that says the region is not supported, YouTube Premium cannot be subscribed to either, and Google Play likewise stays locked to the China region. Have you ever run into this yourself, where the VPS is plainly bought in the US, but Google treats you as a user in mainland China anyway?
