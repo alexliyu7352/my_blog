@@ -6,6 +6,7 @@ tags: ["开源", "AI"]
 lang: zh
 ogImage: ./cover-meta-astryx.webp
 translationKey: meta-astryx-agent-friendly-components
+xPost: "https://x.com/alexlee20122022/status/2120330660359328033"
 ---
 
 你上次让 agent 写一个页面，它一次就写对了吗？Meta 刚把一个设计系统开源出来，名字叫 Astryx，它在 Meta 内部用了八年，支撑着 13,000 多个应用。它真正特别的地方不是组件多，而是人和 agent 用同一套东西写界面。
