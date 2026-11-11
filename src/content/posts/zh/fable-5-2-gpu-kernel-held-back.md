@@ -6,6 +6,7 @@ tags: ["AI", "安全"]
 lang: zh
 ogImage: ./cover-fable-5-2.webp
 translationKey: fable-5-2-gpu-kernel-held-back
+xPost: "https://x.com/alexlee20122022/status/2120352442999034161"
 ---
 
 你有没有在 Claude Code 里见过一句话，说这次换了个模型来回答你？11 月 9 日，Anthropic 发了 Fable 5.2 和 Mythos 5.2，两个名字背后是同一个模型。
