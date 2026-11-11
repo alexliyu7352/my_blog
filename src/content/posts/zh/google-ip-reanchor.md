@@ -6,6 +6,7 @@ tags: ["开源", "安全"]
 lang: zh
 ogImage: ./cover-google-ip-reanchor.png
 translationKey: google-ip-reanchor
+xPost: "https://x.com/alexlee20122022/status/2120476930877083736"
 ---
 
 朋友的一台美国 VPS 在加州 Fremont，IP 也是美国的，可是 Google 把它判成了中国大陆。被判成中国大陆之后，Gemini 打开就是地区不支持，YouTube Premium 也订不了，Google Play 同样锁在中国区。你有没有碰到过这种事，VPS 明明买在美国，Google 却把你当成中国大陆用户？
