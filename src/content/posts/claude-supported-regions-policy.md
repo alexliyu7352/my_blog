@@ -6,6 +6,7 @@ tags: ["ai", "security"]
 lang: en
 ogImage: ./cover-claude-supported-regions-en.png
 translationKey: claude-supported-regions-policy
+xPost: "https://x.com/alexlee20122022/status/2120657214470074645"
 ---
 
 Open Claude Code tomorrow, and you may find that it no longer recognizes you. Anthropic announced its updated region policy on October 8, but the policy only takes effect on November 12, which is tomorrow.
