@@ -6,6 +6,7 @@ tags: ["ai agents", "open source"]
 lang: en
 ogImage: ./cover-hanmo-multi-agent-postmortem-en.png
 translationKey: hanmo-multi-agent-postmortem
+xPost: "https://x.com/alexlee20122022/status/2120954134056853698"
 ---
 
 From September 9 to November 7, I worked on a game set at the end of the Han dynasty, with a team of agents and no other human on the project. The main branch collected 6,050 commits, and if you count every branch, the repository held 11,620 commits in total, with roughly 800,000 lines of code. Judged by those numbers alone, the project looked like it was constantly moving forward.
