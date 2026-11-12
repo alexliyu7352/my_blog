@@ -6,6 +6,7 @@ tags: ["AI", "安全"]
 lang: zh
 ogImage: ./cover-claude-supported-regions-zh.png
 translationKey: claude-supported-regions-policy
+xPost: https://x.com/alexlee20122022/status/2120688638878994792
 ---
 
 你明天打开 Claude Code，就会发现它可能已经不认你了。Anthropic 的新版地区政策 10 月 8 日就公布了，但是要到 11 月 12 日才生效，也就是明天。
