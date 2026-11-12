@@ -6,6 +6,7 @@ tags: ["ai agents", "open source"]
 lang: en
 ogImage: ./cover-aws-emulator-en.png
 translationKey: aws-emulator
+xPost: "https://x.com/alexlee20122022/status/2121017581809135767"
 ---
 
 I installed AWS Emulator 1.0.322 on my own machine. Then I created a queue on SQS. Next I listed the queues to confirm that it had already been created. Then I sent a message into the queue. Finally, I received that message back. The whole process never connected to real AWS. And the body of the message I received back was exactly the same as the body of the message I had sent out.
