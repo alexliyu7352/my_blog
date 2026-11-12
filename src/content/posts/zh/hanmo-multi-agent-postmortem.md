@@ -6,6 +6,7 @@ tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-hanmo-multi-agent-postmortem-zh.png
 translationKey: hanmo-multi-agent-postmortem
+xPost: https://x.com/alexlee20122022/status/2120832897825529896
 ---
 
 从 9 月 9 日到 11 月 7 日，我一个人带着一群 agent 做一款汉末背景的游戏。主线提交了 6,050 次，算上各个分支，全仓一共 11,620 次，代码写了约 80 万行。单看这几个数字，项目像是一直在往前跑。
