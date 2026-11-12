@@ -6,6 +6,7 @@ tags: ["ai agents", "llm"]
 lang: en
 ogImage: ./cover-chatgpt-businesses-storefront-en.png
 translationKey: chatgpt-businesses-storefront
+xPost: https://x.com/alexlee20122022/status/2120670791889264659
 ---
 
 On November 10, OpenAI launched a feature for businesses in ChatGPT called Businesses, and it is still in beta. A business can now claim its own store inside ChatGPT. After it claims the store, it can edit its information, and it can also list products. Customers ask their questions right in the chat box. A Business Agent answers them on the business's behalf. The chat box has gone from a question-and-answer tool to a place where you can open a shop.

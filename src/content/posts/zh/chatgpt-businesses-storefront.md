@@ -6,6 +6,7 @@ tags: ["AI"]
 lang: zh
 ogImage: ./cover-chatgpt-businesses-storefront.png
 translationKey: chatgpt-businesses-storefront
+xPost: https://x.com/alexlee20122022/status/2120702311525679277
 ---
 
 OpenAI 11 月 10 日在 ChatGPT 里推出了商家功能 Businesses，目前还是 beta。商家现在可以在 ChatGPT 里面认领自己的店。认领之后能改资料，也能挂商品。顾客直接在聊天框里发问。Business Agent 替商家回答。聊天框从问答工具，变成了一个能开店的地方。
