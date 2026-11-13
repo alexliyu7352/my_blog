@@ -6,6 +6,7 @@ tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-aws-emulator-zh.png
 translationKey: aws-emulator
+xPost: https://x.com/alexlee20122022/status/2121064210780016988
 ---
 
 我在本机装了 AWS Emulator 1.0.322。然后我在 SQS 上建了一个队列。接着我把队列列出来确认它已经建好。然后我往队列里发了一条消息。最后我把这条消息收了回来。整个过程没有连真的 AWS。而且收回来的消息正文和我发出去的那条消息的正文一模一样。
