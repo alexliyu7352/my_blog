@@ -6,6 +6,7 @@ tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-claude-code-retro-self-review-zh.png
 translationKey: claude-code-retro-self-review
+xPost: https://x.com/alexlee20122022/status/2121587555137364242
 ---
 
 ## 大家用 agent，都是这么用的
