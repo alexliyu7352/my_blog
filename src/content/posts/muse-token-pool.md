@@ -6,6 +6,7 @@ tags: ["ai agents", "open source"]
 lang: en
 ogImage: ./cover-muse-token-pool-en.png
 translationKey: muse-token-pool
+xPost: "https://x.com/alexlee20122022/status/2121444378858406189"
 ---
 
 On the morning of November 9, I opened Muse's usage dashboard. I had 999M extra tokens left, and the screen said 75% used. Used 75% means 25% left, so I divided 999M by 25%, and the whole pool worked out to about 4,000M, which is about 4 billion.
