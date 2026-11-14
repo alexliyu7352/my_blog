@@ -6,6 +6,7 @@ tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-muse-token-pool-zh.png
 translationKey: muse-token-pool
+xPost: https://x.com/alexlee20122022/status/2121437290656362954
 ---
 
 11 月 9 日上午，我打开 Muse 的用量仪表，额外 token 还剩 999M，屏幕上写着已用 75%。已用 75% 就是还剩 25%，我拿 999M 除以 25%，整个池子反推出来约 4,000M，也就是约 40 亿。
