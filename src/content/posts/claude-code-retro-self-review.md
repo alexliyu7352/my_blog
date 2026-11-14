@@ -6,6 +6,7 @@ tags: ["AI", "Open Source"]
 lang: en
 ogImage: ./cover-claude-code-retro-self-review-en.png
 translationKey: claude-code-retro-self-review
+xPost: https://x.com/alexlee20122022/status/2121608587952668719
 ---
 
 ## This is how most people use agents now
