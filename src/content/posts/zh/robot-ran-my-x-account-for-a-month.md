@@ -6,6 +6,7 @@ tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-robot-ran-my-x-account-for-a-month-zh.png
 translationKey: robot-ran-my-x-account-for-a-month
+xPost: https://x.com/alexlee20122022/status/2121465366542946792
 ---
 
 X 的限制标签分两种，一种打在整个账号上，一种打在单个帖子上。我 10 月的账号报告里，打在账号上的那种是 0 个。但是我那个月发的 1,937 帖里，有 37 帖被打上了垃圾标签，而且打标的原因，和我这一个月的涨粉打法直接相关。
