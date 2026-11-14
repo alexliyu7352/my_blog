@@ -6,6 +6,7 @@ tags: ["X", "AI Agents", "Open Source"]
 lang: en
 ogImage: ./cover-robot-ran-my-x-account-for-a-month-en.png
 translationKey: robot-ran-my-x-account-for-a-month
+xPost: https://x.com/alexlee20122022/status/2121663274970501357
 ---
 
 
