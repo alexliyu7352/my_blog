@@ -6,6 +6,7 @@ tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-deepseek-tool-apis-zh.png
 translationKey: deepseek-tool-apis
+xPost: https://x.com/alexlee20122022/status/2121890569177686208
 ---
 
 11 月 13 日，DeepSeek 在 X 上连发四帖，公布了一批新的 API。开发者现在可以调用 DeepSeek App 里面已经在用的搜索、文件解析、读链接和语音能力，而且调用方式有两种。一种是在对话请求里打开内建功能，另一种是把每一项能力当成独立 API 单独调用。
