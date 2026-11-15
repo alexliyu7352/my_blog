@@ -6,6 +6,7 @@ tags: ["AI", "Open Source"]
 lang: en
 ogImage: ./cover-plannotator-en.png
 translationKey: plannotator
+xPost: "https://x.com/alexlee20122022/status/2122044920861253742"
 ---
 
 I changed 3 lines of code in the Pico CSS repository, and then I used plannotator to put 2 line-by-line annotations on those changes. I sent both annotations back in one go, and the agent fixed the first one the way I had asked. I checked its fix myself afterwards. The comments arrived with line numbers attached, and the decisions stayed on record. On those two points, the tool did what it promises.
