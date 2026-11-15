@@ -6,6 +6,7 @@ tags: ["AI", "Open Source"]
 lang: en
 ogImage: ./cover-deepseek-tool-apis-en.png
 translationKey: deepseek-tool-apis
+xPost: https://x.com/alexlee20122022/status/2122017734938534173
 ---
 
 On November 13, DeepSeek posted four times in a row on X and announced a batch of new APIs. Developers can now call the search, file parsing, URL reading and voice capabilities that were already in use inside the DeepSeek App, and they can call them in two ways. They can turn on a built-in feature inside a chat request, or they can call each capability on its own as a separate API. The built-in list has eight features in total, and it starts with web search, where the answer comes with citations.
