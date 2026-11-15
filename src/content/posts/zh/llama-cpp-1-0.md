@@ -6,6 +6,7 @@ tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-llama-cpp-1-0-zh.png
 translationKey: llama-cpp-1-0
+xPost: https://x.com/alexlee20122022/status/2121787758951764263
 ---
 
 11 月 13 日，llama.cpp 发了 1.0.0（发布页：https://github.com/ggerganov/llama.cpp/releases）。自家 API 一次删掉了 35 个废弃函数。warmup 函数和 defrag 选项不在这 35 个之内，是另外拿掉的。
