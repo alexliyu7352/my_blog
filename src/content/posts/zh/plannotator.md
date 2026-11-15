@@ -6,6 +6,7 @@ tags: ["AI", "开源"]
 lang: zh
 ogImage: ./cover-plannotator-zh.png
 translationKey: plannotator
+xPost: "https://x.com/alexlee20122022/status/2121912670366371903"
 ---
 
 我在 Pico CSS 的仓库里改了 3 行代码，又用 plannotator 落了 2 条逐行批注；一次发回之后，agent 照着第 1 条改对了，我也复核过它的改动。意见带行号送达、决定留档，这两件事它做到了。
