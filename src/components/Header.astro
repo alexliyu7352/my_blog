@@ -27,6 +27,16 @@ const pathWithoutTrailingSlash =
 
 const currentPath = stripLocale(pathWithoutTrailingSlash, locale);
 
+// Search is per-language: Pagefind only searches the index matching the
+// search page's own language, so route to the search page for the language
+// the visitor is currently browsing.
+const searchPath = relativePath.startsWith("/zh-tw")
+  ? "/zh-tw/search"
+  : relativePath.startsWith("/zh")
+    ? "/zh/search"
+    : "/search";
+const isSearchActive = pathWithoutTrailingSlash.endsWith("/search");
+
 const isActive = (path: string) => {
   const currentPathArray = currentPath.split("/").filter(p => p.trim());
   const pathArray = path.split("/").filter(p => p.trim());
@@ -138,14 +148,14 @@ const isActive = (path: string) => {
           features.search !== false && (
             <li class="col-span-1 flex items-center justify-center">
               <LinkButton
-                href={"/search"}
+                href={searchPath}
                 class:list={["focus-outline relative size-8"]}
                 title={t.nav.search}
                 aria-label={t.nav.search}
               >
                 <IconSearch class="absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2" />
                 <span class="sr-only">{t.nav.search}</span>
-                {isActive("/search") && (
+                {isSearchActive && (
                   <IconUnderline
                     aria-hidden="true"
                     class="absolute bottom-0 w-6 scale-125 max-sm:inset-s-2"
