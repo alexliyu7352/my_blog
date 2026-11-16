@@ -12,7 +12,7 @@ export async function GET() {
   );
 
   return rss({
-    title: config.site.title,
+    title: "AI摆渡人 Alex",
     description: "AI摆渡人 Alex 的长文：AI 工程实践、开源动态、基础设施与安全。",
     site: config.site.url,
     xmlns: { media: "http://search.yahoo.com/mrss/" },

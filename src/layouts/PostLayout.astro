@@ -55,7 +55,13 @@ const structuredData = {
   author: [
     {
       "@type": "Person",
-      name: site.author,
+      // Display name follows the post's language.
+      name:
+        postLang === "zh"
+          ? "AI摆渡人 Alex"
+          : postLang === "zh-tw"
+            ? "AI擺渡人 Alex"
+            : site.author,
       ...(site.profile && { url: site.profile }),
     },
   ],

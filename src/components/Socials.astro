@@ -1,8 +1,12 @@
 ---
 import config from "@/config";
 import LinkButton from "./LinkButton.astro";
+import { stripBase } from "@/utils/withBase";
+import { siteNameForPath } from "@/utils/siteName";
 
 const { site, socials } = config;
+// Display name is language-specific: Chinese pages use the Chinese name.
+const displayName = siteNameForPath(stripBase(Astro.url.pathname));
 
 const icons = import.meta.glob<{
   default: (_props: Record<string, unknown>) => unknown;
@@ -15,8 +19,8 @@ const items = await Promise.all(
     const title =
       linkTitle ??
       (url.startsWith("mailto:") || name === "mail"
-        ? `Send an email to ${site.title}`
-        : `${site.title} on ${name.charAt(0).toUpperCase() + name.slice(1)}`);
+        ? `Send an email to ${displayName}`
+        : `${displayName} on ${name.charAt(0).toUpperCase() + name.slice(1)}`);
     return { url, title, Icon };
   })
 );

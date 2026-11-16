@@ -3,6 +3,8 @@ import type { HTMLAttributes } from "astro/types";
 import Socials from "./Socials.astro";
 import IconRss from "@/assets/icons/IconRss.svg";
 import config from "@/config";
+import { stripBase } from "@/utils/withBase";
+import { siteNameForPath } from "@/utils/siteName";
 
 type Props = {
   noMarginTop?: boolean;
@@ -16,6 +18,8 @@ const feedHref =
   lang === "zh" ? "/zh/rss.xml" : lang === "zh-tw" ? "/zh-tw/rss.xml" : "/rss.xml";
 const licenseText =
   lang === "zh" ? "内容授权" : lang === "zh-tw" ? "內容授權" : "Licensed under";
+// Display name is language-specific: Chinese pages use the Chinese name.
+const authorName = siteNameForPath(stripBase(Astro.url.pathname));
 const currentYear = new Date().getFullYear();
 ---
 
@@ -30,7 +34,7 @@ const currentYear = new Date().getFullYear();
     <div
       class="my-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm"
     >
-      <span>© {currentYear} {config.site.author}</span>
+      <span>© {currentYear} {authorName}</span>
       <span aria-hidden="true">·</span>
       <span>
         {licenseText}{" "}

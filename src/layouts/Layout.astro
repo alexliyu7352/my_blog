@@ -3,7 +3,8 @@ import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { resolveDefaultOgImagePath } from "@/utils/resolveDefaultOgImagePath";
-import { getAssetPath } from "@/utils/withBase";
+import { getAssetPath, stripBase } from "@/utils/withBase";
+import { siteNameForPath } from "@/utils/siteName";
 import config from "@/config";
 import "@/styles/global.css";
 
@@ -28,6 +29,10 @@ const {
 
 const pageLang = htmlLang ?? Astro.currentLocale ?? site.lang;
 const isZhPage = pageLang.startsWith("zh");
+
+// Display name is language-specific: Chinese pages use the Chinese name.
+const siteTitle = siteNameForPath(stripBase(Astro.url.pathname));
+const displayTitle = Astro.props.title ?? siteTitle;
 
 const socialImageURL = new URL(ogImage, Astro.site ?? Astro.url);
 const rssHref =
@@ -76,16 +81,16 @@ const rssHref =
     }
 
     <!-- Primary meta -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
+    <title>{displayTitle}</title>
+    <meta name="title" content={displayTitle} />
     <meta name="description" content={description} />
-    <meta name="author" content={site.author} />
+    <meta name="author" content={siteTitle} />
     <link rel="sitemap" href={getAssetPath("sitemap-index.xml")} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={site.title} />
-    <meta property="og:title" content={title} />
+    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:title" content={displayTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
@@ -93,7 +98,7 @@ const rssHref =
     <!-- Twitter / X -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
+    <meta property="twitter:title" content={displayTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
@@ -101,7 +106,7 @@ const rssHref =
     <link
       rel="alternate"
       type="application/rss+xml"
-      title={site.title}
+      title={siteTitle}
       href={new URL(rssHref, Astro.site)}
     />
 

@@ -9,6 +9,7 @@ import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconX from "@/assets/icons/IconX.svg";
 import LinkButton from "./LinkButton.astro";
 import { stripBase, stripLocale } from "@/utils/withBase";
+import { siteNameForPath } from "@/utils/siteName";
 import { useTranslations } from "@/i18n";
 import config from "@/config";
 
@@ -26,6 +27,9 @@ const pathWithoutTrailingSlash =
     : relativePath;
 
 const currentPath = stripLocale(pathWithoutTrailingSlash, locale);
+
+// Display name is language-specific: Chinese pages use the Chinese name.
+const brandTitle = siteNameForPath(relativePath);
 
 // Search is per-language: Pagefind only searches the index matching the
 // search page's own language, so route to the search page for the language
@@ -62,7 +66,7 @@ const isActive = (path: string) => {
       href={getRelativeLocaleUrl(locale, "")}
       class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
     >
-      {site.title}
+      {brandTitle}
     </a>
     <nav
       id="nav-menu"
