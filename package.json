@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/gen-zh-tw.mjs && astro check && astro build && node scripts/dual-format-images.mjs && node scripts/gen-tag-redirects.mjs",
+    "build": "node scripts/gen-zh-tw.mjs && astro check && astro build && node scripts/dual-format-images.mjs && node scripts/stable-post-images.mjs && node scripts/gen-tag-redirects.mjs",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",

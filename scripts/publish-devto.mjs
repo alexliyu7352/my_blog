@@ -25,11 +25,12 @@
  * Content transforms (Astro frontmatter != dev.to frontmatter, so the payload
  * is built as JSON and the body is sent without frontmatter):
  *   - tags: lowercased, non-alphanumerics stripped, max 4 (dev.to limit)
- *   - ogImage / body images: relative ./file paths are rewritten to
- *     raw.githubusercontent.com URLs of this public repo, because the dev.to
- *     API has no image upload endpoint and only accepts absolute URLs.
- *     (The built blog serves images under hashed /_astro/ names, which a CI
- *     script cannot know before build; the raw repo URLs are stable.)
+ *   - ogImage / body images: relative ./file paths are rewritten to stable
+ *     URLs on the blog itself, https://blog.go5.si/post-images/<slug>/<stem>.jpg,
+ *     because the dev.to API has no image upload endpoint and only accepts
+ *     absolute URLs. (scripts/stable-post-images.mjs creates those stable
+ *     copies at blog build time. raw.githubusercontent.com was used before
+ *     and is blocked in mainland China, so it was retired.)
  *   - canonical_url: https://blog.go5.si/posts/<slug>/
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
@@ -46,6 +47,17 @@ const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
 const changed = args.includes("--changed");
 let files = args.filter(a => !a.startsWith("--"));
+
+// Backfill mode: a file argument of ALL.md expands to every slug recorded
+// in devto-map.json (used once to re-publish all adopted articles, e.g. to
+// swap image URLs). Triggered via workflow_dispatch with slug = ALL.
+if (files.some(f => path.basename(f) === "ALL.md")) {
+  const mapOnDisk = existsSync(MAP_FILE)
+    ? JSON.parse(readFileSync(MAP_FILE, "utf8"))
+    : {};
+  files = Object.keys(mapOnDisk).map(slug => `${POSTS_DIR}/${slug}.md`);
+  console.log(`ALL mode: ${files.length} mapped posts`);
+}
 
 if (changed) {
   const out = execFileSync(
@@ -87,7 +99,11 @@ function parseFrontmatter(raw) {
 }
 
 const sanitizeTag = t => t.toLowerCase().replace(/[^a-z0-9]/g, "");
-const rawUrl = file => `https://raw.githubusercontent.com/${REPO}/main/${POSTS_DIR}/${file}`;
+const stableUrl = (slug, file) => {
+  const ext = file.toLowerCase().endsWith(".svg") ? ".svg" : ".jpg";
+  const stem = path.basename(file, path.extname(file));
+  return `${SITE}/post-images/${slug}/${stem}${ext}`;
+};
 
 function buildPayload(file) {
   const raw = readFileSync(file, "utf8");
@@ -96,7 +112,7 @@ function buildPayload(file) {
   const tags = [...new Set((fm.tags || []).map(sanitizeTag).filter(Boolean))].slice(0, 4);
   const rewritten = body.replace(
     /!\[([^\]]*)\]\(\.\/([^)\s]+)\)/g,
-    (_, alt, img) => `![${alt}](${rawUrl(img)})`
+    (_, alt, img) => `![${alt}](${stableUrl(slug, img)})`
   );
   const article = {
     title: fm.title,
@@ -107,7 +123,7 @@ function buildPayload(file) {
     canonical_url: `${SITE}/posts/${slug}/`,
   };
   if (fm.ogImage && fm.ogImage.startsWith("./")) {
-    article.main_image = rawUrl(fm.ogImage.slice(2));
+    article.main_image = stableUrl(slug, fm.ogImage.slice(2));
   }
   return { slug, fm, article };
 }
