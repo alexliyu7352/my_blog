@@ -157,6 +157,9 @@ async function findExisting(canonicalUrl) {
 const map = loadMap();
 let mapDirty = false;
 
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+let processed = 0;
+
 for (const file of files) {
   // English posts only: direct children of src/content/posts (zh/ and zh-tw/ are subdirs)
   if (path.dirname(file) !== POSTS_DIR) {
@@ -174,22 +177,35 @@ for (const file of files) {
     continue;
   }
 
-  let id = map[slug]?.id;
-  if (!id) {
-    const existing = await findExisting(article.canonical_url);
-    if (existing) {
-      id = existing.id;
-      console.log(`ADOPT existing dev.to article ${id} for ${slug} (was published=${existing.published})`);
+  // Pace writes: the Forem API rate-limits bursts (429 "Retry later").
+  if (processed > 0) await sleep(6000);
+  try {
+    let id = map[slug]?.id;
+    if (!id) {
+      const existing = await findExisting(article.canonical_url);
+      if (existing) {
+        id = existing.id;
+        console.log(`ADOPT existing dev.to article ${id} for ${slug} (was published=${existing.published})`);
+      }
     }
+
+    const result = id
+      ? await api(`/${id}`, { method: "PUT", body: JSON.stringify({ article }) })
+      : await api("", { method: "POST", body: JSON.stringify({ article }) });
+
+    map[slug] = { id: result.id, url: result.url };
+    mapDirty = true;
+    processed++;
+    console.log(`${id ? "UPDATED" : "PUBLISHED"} ${slug} -> ${result.url}`);
+  } catch (err) {
+    if (String(err.message).includes("429")) {
+      // Rate limited: stop cleanly, keep the progress made so far; the
+      // remaining posts are simply picked up by a later run.
+      console.log(`RATE LIMITED at ${slug}; stopping. ${processed} post(s) done this run.`);
+      break;
+    }
+    throw err;
   }
-
-  const result = id
-    ? await api(`/${id}`, { method: "PUT", body: JSON.stringify({ article }) })
-    : await api("", { method: "POST", body: JSON.stringify({ article }) });
-
-  map[slug] = { id: result.id, url: result.url };
-  mapDirty = true;
-  console.log(`${id ? "UPDATED" : "PUBLISHED"} ${slug} -> ${result.url}`);
 }
 
 if (mapDirty) saveMap(map);
