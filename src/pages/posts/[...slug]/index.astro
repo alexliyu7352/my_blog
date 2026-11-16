@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import { getImage } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import PostLayout from "@/layouts/PostLayout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
@@ -204,6 +204,24 @@ const ogImage = ogImageUrl
           </select>
         </div>
       )
+    }
+
+    {
+      initOgImage &&
+        (typeof initOgImage === "string" ? (
+          <img
+            src={initOgImage}
+            alt=""
+            class="border-border mt-6 aspect-[16/9] w-full rounded-lg border object-cover"
+          />
+        ) : (
+          <Image
+            src={initOgImage}
+            width={1200}
+            alt=""
+            class="border-border mt-6 aspect-[16/9] w-full rounded-lg border object-cover"
+          />
+        ))
     }
 
     <article

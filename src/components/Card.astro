@@ -15,12 +15,12 @@ const { title, description, ogImage, ...props } = data;
 const postUrl = getPostUrl(id, filePath, Astro.currentLocale);
 ---
 
-<li class="my-6">
+<li class="my-6 sm:flex sm:gap-5">
   {
     ogImage && (
       <a
         href={postUrl}
-        class="border-border mb-3 block overflow-hidden rounded-lg border"
+        class="border-border mb-3 block shrink-0 overflow-hidden rounded-lg border sm:mb-0 sm:w-60 lg:w-72"
         aria-hidden="true"
         tabindex="-1"
       >
@@ -28,31 +28,34 @@ const postUrl = getPostUrl(id, filePath, Astro.currentLocale);
           <img
             src={ogImage}
             alt=""
-            class="aspect-[16/9] w-full object-cover"
+            class="aspect-[16/9] h-full w-full object-cover"
             loading="lazy"
           />
         ) : (
           <Image
             src={ogImage}
+            width={640}
             alt=""
-            class="aspect-[16/9] w-full object-cover"
+            class="aspect-[16/9] h-full w-full object-cover"
           />
         )}
       </a>
     )
   }
-  <a
-    href={postUrl}
-    class:list={[
-      "text-accent inline-block text-lg font-medium",
-      "decoration-dashed underline-offset-4 hover:underline",
-      "focus-visible:no-underline focus-visible:underline-offset-0",
-    ]}
-  >
-    <Heading transition:name={toTransitionName(id)}>
-      {title}
-    </Heading>
-  </a>
-  <Datetime {...props} />
-  <p>{description}</p>
+  <div class="min-w-0">
+    <a
+      href={postUrl}
+      class:list={[
+        "text-accent inline-block text-lg font-medium",
+        "decoration-dashed underline-offset-4 hover:underline",
+        "focus-visible:no-underline focus-visible:underline-offset-0",
+      ]}
+    >
+      <Heading transition:name={toTransitionName(id)}>
+        {title}
+      </Heading>
+    </a>
+    <Datetime {...props} />
+    <p>{description}</p>
+  </div>
 </li>
