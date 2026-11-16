@@ -21,6 +21,9 @@ import config from "./astro-paper.config";
 
 export default defineConfig({
   site: config.site.url,
+  image: {
+    service: { entrypoint: "./src/image-service.ts" },
+  },
   integrations: [
     mdx(),
     sitemap({

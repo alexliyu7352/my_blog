@@ -1,5 +1,6 @@
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { render, type CollectionEntry } from "astro:content";
+import { getImage } from "astro:assets";
 import config from "@/config";
 
 const SITE = config.site.url.replace(/\/$/, "");
@@ -43,11 +44,17 @@ const MIME_BY_EXT: Record<string, string> = {
  * media:thumbnail / media:content (Media RSS). Emit both for the post's
  * ogImage so subscribers and importers can pick up the cover.
  */
-export function feedCoverCustomData(
+export async function feedCoverCustomData(
   ogImage: CollectionEntry<"posts">["data"]["ogImage"]
-): string | undefined {
+): Promise<string | undefined> {
   if (!ogImage) return undefined;
-  const raw = typeof ogImage === "string" ? ogImage : ogImage.src;
+  // Local covers go through the image pipeline (JPEG, like the rest of the
+  // site); the raw metadata src keeps the source format (e.g. WebP), which
+  // importers and feed readers silently drop.
+  const raw =
+    typeof ogImage === "string"
+      ? ogImage
+      : (await getImage({ src: ogImage })).src;
   if (!raw) return undefined;
   const url = raw.startsWith("http")
     ? raw

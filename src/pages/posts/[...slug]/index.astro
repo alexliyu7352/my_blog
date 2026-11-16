@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
+import { getImage } from "astro:assets";
 import PostLayout from "@/layouts/PostLayout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
@@ -118,7 +119,11 @@ let ogImageUrl: string | undefined;
 if (typeof initOgImage === "string") {
   ogImageUrl = initOgImage;
 } else if (initOgImage?.src) {
-  ogImageUrl = initOgImage.src;
+  // Run the cover through the image pipeline so og:image uses the same
+  // processed format as the rest of the site (JPEG — see src/image-service.ts).
+  // The raw metadata src keeps the source format (e.g. WebP), which
+  // importers and link previews silently drop.
+  ogImageUrl = (await getImage({ src: initOgImage })).src;
 }
 
 if (!ogImageUrl && config.features.dynamicOgImage) {

@@ -20,7 +20,7 @@ export async function GET() {
       title: data.title,
       description: data.description,
       pubDate: new Date(data.modDatetime ?? data.pubDatetime),
-      customData: feedCoverCustomData(data.ogImage),
+      customData: await feedCoverCustomData(data.ogImage),
         content: await postFeedContent(
           sortedPosts.find(p => p.id === id)!
         ),
