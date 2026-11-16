@@ -50,5 +50,9 @@
   "open-source-not-audited": {
     "id": 4931424,
     "url": "https://dev.to/alexlee7359/open-source-doesnt-mean-audited-the-backdoor-in-an-interview-project-m21"
+  },
+  "aws-infinity-agent-parking": {
+    "id": 4931423,
+    "url": "https://dev.to/alexlee7359/75000-parked-agents-on-an-8-gb-raspberry-pi-aws-infinity-and-the-price-of-waiting-ifd"
   }
 }
