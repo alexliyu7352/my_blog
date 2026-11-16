@@ -26,5 +26,9 @@
   "meta-astryx-agent-friendly-components": {
     "id": 5013209,
     "url": "https://dev.to/alexlee7359/meta-open-sourced-the-design-system-behind-13000-apps-a-component-library-friendlier-to-agents-38j8"
+  },
+  "deepseek-harness-plugins": {
+    "id": 5013207,
+    "url": "https://dev.to/alexlee7359/deepseek-harness-hit-154m-daily-users-in-five-weeks-with-35000-plugins-already-built-kkb"
   }
 }
