@@ -206,26 +206,6 @@ const ogImage = ogImageUrl
       )
     }
 
-    {
-      initOgImage &&
-        (typeof initOgImage === "string" ? (
-          <img
-            id="post-cover"
-            src={initOgImage}
-            alt=""
-            class="border-border mt-6 aspect-[16/9] w-full cursor-zoom-in rounded-lg border object-cover"
-          />
-        ) : (
-          <Image
-            id="post-cover"
-            src={initOgImage}
-            width={1200}
-            alt=""
-            class="border-border mt-6 aspect-[16/9] w-full cursor-zoom-in rounded-lg border object-cover"
-          />
-        ))
-    }
-
     <article
       id="article"
       class:list={[
@@ -234,6 +214,28 @@ const ogImage = ogImageUrl
         "prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)",
       ]}
     >
+      {
+        initOgImage && (
+          <div class="not-prose">
+            {typeof initOgImage === "string" ? (
+              <img
+                id="post-cover"
+                src={initOgImage}
+                alt=""
+                class="border-border mb-8 aspect-[16/9] w-full cursor-zoom-in rounded-lg border object-cover"
+              />
+            ) : (
+              <Image
+                id="post-cover"
+                src={initOgImage}
+                width={1200}
+                alt=""
+                class="border-border mb-8 aspect-[16/9] w-full cursor-zoom-in rounded-lg border object-cover"
+              />
+            )}
+          </div>
+        )
+      }
       <Content />
     </article>
 
