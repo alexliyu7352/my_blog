@@ -38,5 +38,9 @@
   "x-algorithm-teardown": {
     "id": 4955180,
     "url": "https://dev.to/alexlee7359/the-latest-xcom-recommendation-algorithm-code-decoded-and-tested-second-post-at-625-is-a-5aib"
+  },
+  "rust-replacing-c": {
+    "id": 4940984,
+    "url": "https://dev.to/alexlee7359/rust-is-replacing-c-by-never-rewriting-it-3i2p"
   }
 }
