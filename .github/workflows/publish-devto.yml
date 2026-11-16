@@ -1,0 +1,78 @@
+name: Publish to dev.to
+
+# Replaces the dev.to RSS import (which only creates drafts that then need a
+# manual publish click). On push to main, English posts changed in that push
+# are created/updated on dev.to with published: true via the Forem API.
+#
+# One-time setup: add the dev.to API key (dev.to -> Settings -> Extensions)
+# as the repository Actions secret DEVTO_API_KEY.
+#
+# The publish script records slug -> dev.to article id in
+# scripts/devto-map.json; the last step commits that file back ([skip ci])
+# so later pushes update the same article instead of duplicating it.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/content/posts/*.md"
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Post slug to publish (blank = posts changed in last commit)"
+        required: false
+        type: string
+      dry_run:
+        description: "Print payloads without calling the dev.to API"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-devto
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Publish changed posts to dev.to
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+        run: |
+          if [ -n "${{ inputs.slug }}" ]; then
+            FILE="src/content/posts/${{ inputs.slug }}.md"
+          else
+            FILE=""
+          fi
+          DRY=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then DRY="--dry-run"; fi
+          if [ -n "$FILE" ]; then
+            node scripts/publish-devto.mjs $DRY "$FILE"
+          else
+            node scripts/publish-devto.mjs $DRY --changed
+          fi
+
+      - name: Commit dev.to article map
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          if git diff --quiet -- scripts/devto-map.json; then
+            echo "Map unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/devto-map.json
+          git commit -m "chore: update dev.to article map [skip ci]"
+          git push
