@@ -22,5 +22,9 @@
   "fable-5-2-gpu-kernel-held-back": {
     "id": 5013211,
     "url": "https://dev.to/alexlee7359/fable-52-scored-491-at-coding-but-anthropic-itself-held-back-its-gpu-kernel-writing-skill-4fla"
+  },
+  "meta-astryx-agent-friendly-components": {
+    "id": 5013209,
+    "url": "https://dev.to/alexlee7359/meta-open-sourced-the-design-system-behind-13000-apps-a-component-library-friendlier-to-agents-38j8"
   }
 }
