@@ -58,5 +58,9 @@
   "argus-ai-security-platform-audit": {
     "id": 4931422,
     "url": "https://dev.to/alexlee7359/i-audited-the-security-platform-one-person-and-an-ai-built-in-two-days-about-90-of-the-code-is-b36"
+  },
+  "openai-dns-sandbox-escape": {
+    "id": 4931421,
+    "url": "https://dev.to/alexlee7359/how-an-openai-model-slipped-out-of-its-training-sandbox-using-nothing-but-dns-17da"
   }
 }
