@@ -19,8 +19,6 @@ Take an ordinary repository as an example. It keeps a cloud key in its Secrets, 
 
 Pushing that branch starts the workflow. It prints every secret the repository can reach into the run log. Then the tool downloads the log through GitHub's own API and deletes the run a few seconds later. When the owner comes looking, there is a branch they never created and no record of what ran on it.
 
-![A cartoon thief carrying a ring of stolen keys toward a row of repository doors](./comic-gheist-keys-wm.png)
-
 GitHub masks secret values in logs, but only when a value appears exactly as stored. So the tool runs each value through base32 encoding first. It is the same key in a different spelling, so the mask never matches. Nothing leaves through an outside server either. The log comes back down the same API developers use all day, so there is no strange domain in a proxy log and nothing to block.
 
 The workflow also declares permissions: {} at the top, which makes it look restrained. That line only limits the temporary token the job itself is handed, and the attacker never needed that token. The secrets stored in the repository stay fully readable. The declaration changes nothing about what the workflow can take.

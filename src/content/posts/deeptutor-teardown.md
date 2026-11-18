@@ -13,8 +13,6 @@ An open-source AI tutor out of the University of Hong Kong had 1,369 stars four 
 
 This is a long one, and the verdict needs the length to be fair. Here it is up front: DeepTutor's core, a structured record of what you got wrong and a loop that quizzes you from it, is the team's own engineering. It is also, in 2026, the one part of the product a single agent skill can copy. What a skill cannot copy is everything built around that core, and the 54,000 stars are mostly for the surroundings: a platform, a delivery shape for people who do not live in a terminal, and a lab that knows how to launch. If you are a technical user studying alone, you may need none of it. That distinction is the whole piece.
 
-![A robot tutor proudly hugs an enormous ledger of graded papers covered in red crosses and green ticks, while the student stares, and three little memory clouds shrug above them](./comic-deeptutor-memory-wm.png)
-
 ## The honest baseline: what a chat box already remembers
 
 Any serious test of a tutor's memory has to start with what the ordinary chat box does today, because it does more than it did two years ago. Inside one conversation, the model sees what you said earlier in that same conversation. That part was never in doubt.

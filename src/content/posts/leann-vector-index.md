@@ -12,7 +12,6 @@ xPost: https://x.com/alexlee20122022/status/2116938791256551803
 LEANN cut a 60-million-passage index from 201GB to 6GB. Is trading disk space for waiting time worth it?
 If you've messed around with a local knowledge base (RAG), you know the model often isn't what eats your disk. The search index is.
 
-![Cartoon: a 201GB filing cabinet bursting out of a laptop, versus a 6GB box and an hourglass waiting while a calculator recomputes on the spot](./comic-leann-wm.png)
 The basic idea is simple. To let an AI answer questions from your email, chat history, or documents, you chop the files into small passages and turn each one into a long list of numbers (a vector) that you store. Add up enough passages and those lists take a lot of room. For 60 million Wikipedia passages, a conventional index comes to 201GB. Plenty of local setups die right there: the model runs fine, the index has filled the drive.
 LEANN, open-sourced by Berkeley's Sky Computing Lab, takes a pretty drastic shortcut: it doesn't store the full vectors.
 It keeps a trimmed graph that shows which passages mean similar things, plus a compressed, rough version of the numbers. When you search, you follow the graph and use the rough numbers to pick out a few likely candidates, then you take the original text of just those passages and recompute their full vectors on the spot. A search only ever needs a handful of passages, so there was never much point in storing numbers for tens of millions of them just in case.

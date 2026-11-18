@@ -13,8 +13,6 @@ One robots.txt line to refuse AI training, and no single start date
 
 Your website can now say no to AI training in a single line. That is real progress, and it is not protection yet. The document behind the line is a draft, the start dates are scattered and mostly in 2027, and no line you add now reaches back to models that already trained on your pages. If you add the line and stop there, you will feel protected while the models that already learned from your pages, and the crawlers that have not signed on, carry on unchanged.
 
-![Cartoon: a site owner tapes a single sheet of rules to the door while a robot reads it, with three 2027 calendars on the wall](./comic-aipref-sign-wm.png)
-
 The gap between that progress and real protection starts with what robots.txt actually is: a plain text file at the root of a website, which crawlers conventionally read before they fetch anything. It carries no enforcement of its own. It is a request that a crawler operator chooses to honor. A shared wording is useful because it replaces one entry per company. Because it has no enforcement, it settles nothing by itself.
 
 Until now, saying no meant keeping a stack of company-specific wordings. Google has offered Google-Extended since 2023, OpenAI has GPTBot, Anthropic has ClaudeBot, and Bing has its own rules. A site owner had to write one entry per company, and missing one meant that company's crawler simply had no instruction from you. The new signal replaces that stack with one shared entry, written once and read by every company that signs on.
@@ -36,7 +34,5 @@ Search eligibility does not change, and both Google and Microsoft say so plainly
 I run a site myself, so my own answer is straightforward. Keep the company-specific blocks you already have, because those are what works today. Add the shared line now, while you are thinking about it, so it is already sitting there when each company's switch flips. Do not tidy the old entries away in a cleanup, and do not treat the new line as a finished shield. After 2027, when your pages have been recrawled, check whether the companies that promised to read it actually behave as if they did.
 
 The check that matters is on your own file, not in a press release: the old entries stay, the new line sits beside them, and after 2027 you look for whether the behavior changed. If your site has a robots.txt, it is worth ten minutes this week to open it and check what is already in it, and whether this line goes in now or waits for 2027. Bookmark this blog if breakdowns like this save you a round of guessing; I keep posting them on AI, security and open source.
-
-
 
 Sources: [Search Engine Land (2026-10-30)](https://searchengineland.com/google-also-gives-publishers-more-control-over-how-ai-uses-their-content-499971); [RR Tech Pulse (updated 2026-10-31, with the Anthropic-correction note)](https://rrtechpulse.com/stories/robots-txt-ai-training-opt-out-signal/); IETF draft draft-kelley-aipref-training-preference-signal-00 (Kevin Kelley, 2026-10-30).

@@ -21,8 +21,6 @@ The complaint lists the kinds of questions they asked. They asked for lyrics by 
 
 The exhibits include a line from Claude itself, describing what it had just generated as "very close to the original." The complaint also notes that Anthropic had been sued over lyrics before and had added guardrails, the filters meant to stop it from outputting lyrics. According to the plaintiffs, the outputs continued anyway.
 
-![A robot cheerfully singing into a microphone in the witness stand, while the judge and the lawyer stare](./comic-elvis-robot-witness-wm.png)
-
 This works on Elvis because a famous work does not exist on the internet as one copy. It exists as thousands of copies. Lyrics sites print it, forums paste it, reviews quote it, and karaoke videos carry it in subtitles. When the same song is read a few thousand times during training, the model memorizes parts of it word for word.
 
 In 2023, researchers tested this to the limit. They made ChatGPT repeat a single word over and over until it left its normal chat mode and began outputting long passages of text it had read during training. The whole exercise cost about $200 and produced more than ten thousand verbatim samples. Their conclusion was that alignment training does not delete these memories. It only covers them up in normal use.

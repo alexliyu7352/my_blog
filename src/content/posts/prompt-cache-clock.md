@@ -13,8 +13,6 @@ The clock in your prompt is quietly killing your cache
 
 Start with an example, and the whole thing clicks. Say you built a support bot. Every prompt you send looks like this: the first line says "Current time: 2026-10-29 09:41:07", then comes a big fixed block, your product manual and support scripts, tens of thousands of words, identical every time, and only then the user's actual question.
 
-![A dizzy robot re-typing the same enormous book under a spinning clock, while the cash register burns money](./comic-prompt-cache-clock-wm.png)
-
 Caching exists exactly for repetition like that. Processing a prompt costs money, and the opening tens of thousands of words never change, so the provider saves the work it already did. On the next request it matches from the first character, and whatever matches is billed at the much cheaper cache rate. That is a cache hit.
 
 ![Two requests side by side: a per-second timestamp on line one breaks the match immediately, while a date-only line matches all day](./diagram-prompt-cache-en.png)

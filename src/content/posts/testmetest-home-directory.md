@@ -19,8 +19,6 @@ It is not one package but a family of them: a string of small npm utilities whos
 
 I maintain open-source projects. Installing packages, opening repositories and looking after tokens is my ordinary work, and every step of this worm is aimed at that ordinary work. So I read both reports end to end: SafeDep's October 22 teardown of the packages, and JFrog's follow-up through the repositories, published October 26.
 
-![Cartoon: the testmetest worm waiting beside a developer's machine for the token to be revoked](./comic-testmetest-worm-wm.png)
-
 SafeDep's reading is that it descends from Miasma, an npm worm from June, with one addition taken from Mini Shai-Hulud: the revocation tripwire. The lineage stops there. Shai-Hulud's source has been public since May, and anyone can build on it, so the code does not establish that the original operators are behind this.
 
 It gets onto a machine at install time. There is no conventional install script. The execution is hidden inside binding.gyp, the build file npm has to process whenever a package ships native code, so the code runs while npm install is still working. SafeDep flagged the consequence directly: --ignore-scripts, the switch that blocks install scripts, does not stop it, because it never relied on a script hook.

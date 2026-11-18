@@ -15,8 +15,6 @@ Two of the most conservative codebases in computing moved in the same week. On O
 
 Every time this comes up, someone does the line count, and the line count says the whole idea is silly. Greg Kroah-Hartman has given the numbers himself: about 36 million lines of C in the kernel, against 113,000 lines of Rust. By that math C is immortal and the replacement talk is a rounding error looking for a headline.
 
-![A maintainer hauling a giant crab-marked Rust toolchain up the boot stairs, to add one tiny component](./comic-systemd-rust-toolchain-wm.png)
-
 But that is not how a language dies. A language dies when new code stops being written in it. The old code keeps running, keeps getting patched, and looks untouchable while that happens. Meanwhile every new component, every new driver, every new tool starts life in something else. The stock decides how long C keeps running. The flow decides whether it is still alive.
 
 Look at the rules the conservative projects have written for themselves and they are the same principle everywhere: existing C is not touched, and Rust is allowed only in new code. The kernel opened the door that way in 2022, new drivers first. Last December the maintainers' summit declared the experiment over and Rust a core kernel language.
