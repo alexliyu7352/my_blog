@@ -62,5 +62,37 @@
   "openai-dns-sandbox-escape": {
     "id": 4931421,
     "url": "https://dev.to/alexlee7359/how-an-openai-model-slipped-out-of-its-training-sandbox-using-nothing-but-dns-17da"
+  },
+  "ai-training-opt-out-robots-txt": {
+    "id": 4959646,
+    "url": "https://dev.to/alexlee7359/one-robotstxt-line-to-refuse-ai-training-and-no-single-start-date-54jp"
+  },
+  "deeptutor-teardown": {
+    "id": 4968976,
+    "url": "https://dev.to/alexlee7359/deeptutor-taken-apart-its-core-trick-fits-in-one-skill-so-why-did-54000-people-star-the-105o"
+  },
+  "elvis-training-check": {
+    "id": 4944525,
+    "url": "https://dev.to/alexlee7359/274-elvis-songs-were-used-to-train-ai-heres-how-the-rights-holders-found-out-ac1"
+  },
+  "gheist-stolen-tokens": {
+    "id": 4947683,
+    "url": "https://dev.to/alexlee7359/tokens-from-850-github-accounts-were-stolen-and-13500-branches-were-planted-with-a-workflow-built-1ka0"
+  },
+  "github-agentic-workflows": {
+    "id": 4975706,
+    "url": "https://dev.to/alexlee7359/github-put-agents-in-actions-can-a-small-project-finally-afford-proper-ci-1dbj"
+  },
+  "leann-vector-index": {
+    "id": 4958996,
+    "url": "https://dev.to/alexlee7359/leann-cut-a-60-million-passage-index-from-201gb-to-6gb-is-trading-disk-space-for-waiting-time-jg0"
+  },
+  "prompt-cache-clock": {
+    "id": 4944524,
+    "url": "https://dev.to/alexlee7359/the-clock-in-your-prompt-is-quietly-killing-your-cache-g9j"
+  },
+  "testmetest-home-directory": {
+    "id": 4949886,
+    "url": "https://dev.to/alexlee7359/your-home-directory-got-deleted-dont-look-for-an-intruder-it-may-have-been-your-own-hand-1dm2"
   }
 }
