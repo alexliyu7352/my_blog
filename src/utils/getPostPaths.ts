@@ -40,7 +40,7 @@ export function getPostSlug(id: string, filePath: string | undefined): string {
  * Returns a fully navigable URL for use in `<a href>` and RSS links.
  * Applies both locale routing and the configured Astro base via
  * `getRelativeLocaleUrl`.
- * e.g. `/posts/my-post` or `/en/posts/my-post`
+ * e.g. `/posts/my-post/` or `/en/posts/my-post/`
  */
 export function getPostUrl(
   id: string,
@@ -52,5 +52,9 @@ export function getPostUrl(
   // produced /zh/posts/zh/… 404s on the Chinese homepages, so the URL is
   // always the plain folder path.
   void locale;
-  return `/posts/${getPostSlugPath(id, filePath)}`;
+  // Trailing slash: canonical and sitemap URLs carry it, and the server
+  // 308-redirects the slashless form to it. Returning the slashless form
+  // here fed Google the redirecting URLs via hreflang (79 "Page with
+  // redirect" entries in Search Console, 2026-11-16).
+  return `/posts/${getPostSlugPath(id, filePath)}/`;
 }
