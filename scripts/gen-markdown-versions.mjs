@@ -6,7 +6,7 @@
  *      /posts/<slug>.md, /posts/zh/<slug>.md, /posts/zh-tw/<slug>.md
  *    Frontmatter is replaced by a small header (title, description,
  *    canonical URL, date); relative image paths are rewritten to the
- *    absolute processed /_astro/ URLs the live site actually serves.
+ *    stable post-images URLs (falling back to processed /_astro/).
  *
  * 2. /llms.txt — the llms.txt proposal (llmstxt.org): an H1, a summary
  *    blockquote, and sections of described links to the Markdown twins.
@@ -125,9 +125,21 @@ for (const { dir, label } of LANGS) {
     // Rewrite relative image refs to absolute live URLs. Sources use
     // both "./x.png" and bare "x.png"; both are relative to the post
     // folder and break as-is in a .md served from the post URL.
+    // Prefer the stable, unhashed post-images address (the same one
+    // dev.to syndication uses — scripts/stable-post-images.mjs runs
+    // earlier in the build): hashed /_astro/ names change whenever
+    // the image pipeline changes, which would 404 every off-site
+    // copy. Fall back to the processed /_astro/ file when no stable
+    // copy exists. Chinese stable copies live under post-images/zh/;
+    // Traditional posts share the Chinese images.
     const toAbsolute = ref => {
       const ext = ref.toLowerCase().endsWith(".svg") ? ".svg" : ".jpg";
       const stem = path.basename(ref, path.extname(ref));
+      const stableRel =
+        (label === "en"
+          ? `post-images/${slug}/${stem}${ext}`
+          : `post-images/zh/${slug}/${stem}${ext}`);
+      if (existsSync(path.join(DIST, stableRel))) return `${SITE}/${stableRel}`;
       const variant = findVariant(stem, ext);
       return variant ? `${SITE}/_astro/${variant}` : null;
     };

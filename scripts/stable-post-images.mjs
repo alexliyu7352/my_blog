@@ -1,16 +1,30 @@
 #!/usr/bin/env node
 /**
- * Give every English post's images a stable, unhashed URL on the blog
- * itself: https://blog.go5.si/post-images/<slug>/<image-stem>.jpg
+ * Give every post's images a stable, unhashed URL on the blog itself:
+ *   English: https://blog.go5.si/post-images/<slug>/<image-stem>.jpg
+ *   Chinese: https://blog.go5.si/post-images/zh/<slug>/<image-stem>.jpg
+ * (Traditional posts share the Chinese images, so no zh-tw tree.)
  *
- * Why: syndication targets (dev.to, Hashnode, ...) need absolute image URLs
- * that never change. The built blog serves images under hashed /_astro/
- * names, and raw.githubusercontent.com (the previous fallback) is blocked
- * in mainland China. So after `astro build`, this step copies the largest
- * processed variant of each image an English post references (frontmatter
- * ogImage + markdown body images) to dist/post-images/<slug>/ under the
- * original file stem. The blog's own pages keep using the hashed pipeline
- * files; these copies exist only as stable targets for external embeds.
+ * Why: syndication targets (dev.to, Hashnode, ...), the Markdown twins
+ * and other off-site copies need absolute image URLs that never change.
+ * The built blog serves images under hashed /_astro/ names, and
+ * raw.githubusercontent.com (the previous fallback) is blocked in
+ * mainland China. So after `astro build`, this step copies the largest
+ * processed variant of each image a post references (frontmatter
+ * ogImage + markdown body images) to dist/post-images/ under the
+ * original file stem. The blog's own pages keep using the hashed
+ * pipeline files; these copies exist only as stable targets.
+ *
+ * Two traps handled here:
+ * - Body image refs come in two spellings, "./x.png" and bare "x.png";
+ *   missing the bare form silently left those images uncopied (404 at
+ *   the stable URL dev.to had already been given).
+ * - A cover filename can exist in both languages with different
+ *   content (cover-floorplan is the EN and ZH cover under one name).
+ *   Picking "the largest variant" across both families once shipped
+ *   the Chinese cover at the English stable URL. The ogImage copy is
+ *   therefore taken from the post's own built page (its post-cover
+ *   hero), which names the exact processed file for that language.
  *
  * Runs as part of `npm run build`, after astro build.
  */
@@ -73,36 +87,78 @@ function findVariant(stem, ext) {
   return largestVariant(fallback);
 }
 
-const postFiles = readdirSync(POSTS_DIR).filter(f => f.endsWith(".md"));
 let copied = 0;
 let totalBytes = 0;
 const warnings = [];
 
-for (const postFile of postFiles) {
-  const slug = path.basename(postFile, ".md");
-  const raw = readFileSync(path.join(POSTS_DIR, postFile), "utf8");
-  const refs = new Set();
-  const og = raw.match(/^ogImage:\s*["']?\.\/([^"'\s]+)["']?\s*$/m);
-  if (og) refs.add(og[1]);
-  for (const m of raw.matchAll(/!\[[^\]]*\]\(\.\/([^)\s]+)\)/g)) refs.add(m[1]);
-  if (!refs.size) continue;
+/** Exact processed file a post's built page uses as its cover hero. */
+function heroVariant(pagePath) {
+  if (!existsSync(pagePath)) return null;
+  const html = readFileSync(pagePath, "utf8");
+  const tag = html.match(/<img[^>]*id="post-cover"[^>]*>/);
+  if (!tag) return null;
+  const src = tag[0].match(/src="([^"]+)"/);
+  return src ? path.basename(src[1]) : null;
+}
 
-  for (const ref of refs) {
-    const ext = ref.toLowerCase().endsWith(".svg") ? ".svg" : ".jpg";
-    const stem = path.basename(ref, path.extname(ref));
-    const variant = findVariant(stem, ext);
-    if (!variant) {
-      warnings.push(`${slug}: no processed variant for ${ref}`);
-      continue;
+function processPosts(srcDir, outPrefix, pagePrefix) {
+  if (!existsSync(srcDir)) return;
+  for (const postFile of readdirSync(srcDir).filter(f =>
+    f.endsWith(".md")
+  )) {
+    const slug = path.basename(postFile, ".md");
+    const raw = readFileSync(path.join(srcDir, postFile), "utf8");
+    const og = raw.match(/^ogImage:\s*["']?(?:\.\/)?([^"'\s]+)["']?\s*$/m);
+    const ogRef =
+      og && !/^https?:\/\//.test(og[1]) && !og[1].startsWith("/")
+        ? og[1]
+        : null;
+    const refs = new Set();
+    for (const m of raw.matchAll(/!\[[^\]]*\]\((?:\.\/)?([^)\s]+)\)/g)) {
+      if (!/^https?:\/\//.test(m[1])) refs.add(m[1]);
     }
-    const destDir = path.join(OUT_DIR, slug);
-    mkdirSync(destDir, { recursive: true });
-    const dest = path.join(destDir, stem + ext);
-    copyFileSync(path.join(ASTRO_DIR, variant), dest);
-    copied++;
-    totalBytes += statSync(dest).size;
+    if (ogRef) refs.delete(ogRef); // handled separately below
+    if (!refs.size && !ogRef) continue;
+
+    const destDir = path.join(OUT_DIR, outPrefix, slug);
+    const copyVariant = (variant, stem, ext) => {
+      if (!existsSync(path.join(ASTRO_DIR, variant))) {
+        warnings.push(`${slug}: variant ${variant} not in _astro`);
+        return;
+      }
+      mkdirSync(destDir, { recursive: true });
+      const dest = path.join(destDir, stem + ext);
+      copyFileSync(path.join(ASTRO_DIR, variant), dest);
+      copied++;
+      totalBytes += statSync(dest).size;
+    };
+
+    if (ogRef) {
+      const ext = ogRef.toLowerCase().endsWith(".svg") ? ".svg" : ".jpg";
+      const stem = path.basename(ogRef, path.extname(ogRef));
+      const hero = heroVariant(
+        path.join(DIST, "posts", pagePrefix, slug, "index.html")
+      );
+      const variant = hero ?? findVariant(stem, ext);
+      if (!variant) warnings.push(`${slug}: no variant for og ${ogRef}`);
+      else copyVariant(variant, stem, ext);
+    }
+
+    for (const ref of refs) {
+      const ext = ref.toLowerCase().endsWith(".svg") ? ".svg" : ".jpg";
+      const stem = path.basename(ref, path.extname(ref));
+      const variant = findVariant(stem, ext);
+      if (!variant) {
+        warnings.push(`${slug}: no processed variant for ${ref}`);
+        continue;
+      }
+      copyVariant(variant, stem, ext);
+    }
   }
 }
+
+processPosts(POSTS_DIR, "", "");
+processPosts(path.join(POSTS_DIR, "zh"), "zh", "zh");
 
 console.log(
   `[stable-images] copied ${copied} images (${(totalBytes / 1048576).toFixed(1)} MB) to dist/post-images/`
