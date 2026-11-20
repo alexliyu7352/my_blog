@@ -12,6 +12,7 @@ type Props = {
   translations?: { lang: string; url: string }[];
   postLang?: string;
   rssHref?: string;
+  markdownUrl?: string;
 };
 
 const { site } = config;
@@ -26,6 +27,7 @@ const {
   translations,
   postLang,
   rssHref,
+  markdownUrl,
 } = Astro.props;
 
 const hreflangOf = (lang: string) =>
@@ -84,6 +86,17 @@ const structuredData = {
       hreflangAlternates.map(alt => (
         <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
       ))
+    }
+
+    {
+      markdownUrl && (
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href={markdownUrl}
+          title="Markdown version of this post (for AI agents)"
+        />
+      )
     }
 
     {

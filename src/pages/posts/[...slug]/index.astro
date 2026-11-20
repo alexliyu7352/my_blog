@@ -138,6 +138,10 @@ if (!ogImageUrl && config.features.dynamicOgImage) {
 const ogImage = ogImageUrl
   ? new URL(ogImageUrl, Astro.url.origin).href
   : undefined;
+
+// Markdown twin of this post, generated into dist by
+// scripts/gen-markdown-versions.mjs: same URL, .md instead of /.
+const markdownUrl = postUrl.replace(/\/$/, ".md");
 ---
 
 <PostLayout
@@ -150,6 +154,7 @@ const ogImage = ogImageUrl
   translations={translations}
   postLang={postLang}
   rssHref={feedHref}
+  markdownUrl={markdownUrl}
 >
   <Header />
 
@@ -184,6 +189,20 @@ const ogImage = ogImageUrl
         |
       </span>
       <EditPost {hideEditPost} {post} class="max-sm:hidden" />
+      <span aria-hidden="true" class="text-muted-foreground">|</span>
+      <a
+        href={markdownUrl}
+        class="underline decoration-dashed underline-offset-4 opacity-80 hover:opacity-100"
+        title="Markdown version of this post, for AI agents"
+      >
+        {
+          postLang === "en"
+            ? "Markdown version (for AI agents)"
+            : postLang === "zh"
+              ? "Markdown 版（供 AI 阅读）"
+              : "Markdown 版（供 AI 閱讀）"
+        }
+      </a>
     </div>
 
     {
