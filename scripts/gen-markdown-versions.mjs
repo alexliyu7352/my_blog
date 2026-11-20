@@ -122,20 +122,41 @@ for (const { dir, label } of LANGS) {
     if (firstLine === title) {
       body = body.slice(body.indexOf("\n") + 1).trim();
     }
-    // Rewrite relative image refs to absolute live URLs.
+    // Rewrite relative image refs to absolute live URLs. Sources use
+    // both "./x.png" and bare "x.png"; both are relative to the post
+    // folder and break as-is in a .md served from the post URL.
+    const toAbsolute = ref => {
+      const ext = ref.toLowerCase().endsWith(".svg") ? ".svg" : ".jpg";
+      const stem = path.basename(ref, path.extname(ref));
+      const variant = findVariant(stem, ext);
+      return variant ? `${SITE}/_astro/${variant}` : null;
+    };
     body = body.replace(
-      /!\[([^\]]*)\]\(\.\/([^)\s]+)\)/g,
+      /!\[([^\]]*)\]\((?!https?:\/\/|data:|\/)(?:\.\/)?([^)\s]+)\)/g,
       (whole, alt, ref) => {
-        const ext = ref.toLowerCase().endsWith(".svg") ? ".svg" : ".jpg";
-        const stem = path.basename(ref, path.extname(ref));
-        const variant = findVariant(stem, ext);
-        if (!variant) {
+        const abs = toAbsolute(ref);
+        if (!abs) {
           imgWarnings++;
           return whole;
         }
-        return `![${alt}](${SITE}/_astro/${variant})`;
+        return `![${alt}](${abs})`;
       }
     );
+    // The cover (frontmatter ogImage) is rendered as the hero on the
+    // HTML page but usually does not appear in the body — without this
+    // the .md twin loses the post's main image entirely.
+    const ogRef = fmValue(fm, "ogImage");
+    const ogStem = ogRef
+      ? path.basename(ogRef, path.extname(ogRef))
+      : "";
+    if (ogRef && !body.includes(ogStem + ".")) {
+      let coverUrl = null;
+      if (/^https?:\/\//.test(ogRef)) coverUrl = ogRef;
+      else if (ogRef.startsWith("/")) coverUrl = SITE + ogRef;
+      else coverUrl = toAbsolute(ogRef.replace(/^\.\//, ""));
+      if (coverUrl) body = `![${title}](${coverUrl})\n\n` + body;
+      else imgWarnings++;
+    }
     // Make root-relative links absolute.
     body = body.replace(/\]\((\/[^)\s]+)\)/g, `](${SITE}$1)`);
 
