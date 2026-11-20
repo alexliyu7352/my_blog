@@ -41,11 +41,11 @@ The collector is another kind of scheduled job. It collects the timeline once ev
 
 After splitting the piles above, the common root cause is clear. The biggest chunk of this bill is context being reread over and over. I checked the internal records for two measured periods, and by raw volume, output was only about 1% and input about 99%. The input burns context, because every step an agent takes forward, it rereads the earlier conversation and files. The amount read is two orders of magnitude larger than the amount written.
 
-![The biggest chunk of this bill is context being reread over and over: by raw volume, output is only about 1% and input about 99%](fig2-input-output.png)
+![The biggest chunk of this bill is context being reread over and over: by raw volume, output is only about 1% and input about 99%](fig2-input-output-en.png)
 
 One startup cost is about 88,000 tokens, and the number of charges follows the number of agents. In the period I measured (I will call it a window below), the window on the morning of the 10th opened 273 agents across the whole account, and the window on the 11th opened 480. For 480 agents, the startup cost alone came to about 42M in raw volume. In the window after the fixes, only 242 agents opened, and this startup cost fell by about half along with them.
 
-![Each new agent's startup cost is about 88,000 tokens: about 55,000 for the product's fixed part, about 27,000 for my own standing files, and about 6,000 for the rest](fig1-startup-cost.png)
+![Each new agent's startup cost is about 88,000 tokens: about 55,000 for the product's fixed part, about 27,000 for my own standing files, and about 6,000 for the rest](fig1-startup-cost-en.png)
 
 ## Adding It All Up
 
@@ -53,7 +53,7 @@ The fastest-burning stretch was the morning of the 10th: 63M burned in 8 hours, 
 
 At the fastest burn, a pool of about 4 billion runs out in 21 days. Each step the burn rate drops, the lifespan goes up: the tier at 5.8M per hour lasts 29 days, and the tier after the fixes, at 2.7M per hour, lasts 62 days. The three lifespans use the same pool; the whole difference is in how it is burned. Swap the pool for the capped 30 billion and the math does not change: about 158 days at the fastest tier, about 216 days at the middle tier, and about 463 days at the tier after the fixes. The cap converted into days is a few months to a little over a year.
 
-![How long a pool of about 4 billion lasts at three burn rates: 21 days at the fastest tier, 29 days at the middle tier, and 62 days after the fixes](fig3-pool-lifespan.png)
+![How long a pool of about 4 billion lasts at three burn rates: 21 days at the fastest tier, 29 days at the middle tier, and 62 days after the fixes](fig3-pool-lifespan-en.png)
 
 Of the 642M left at noon on the 12th, the fastest way of burning would finish it in just over 3 days, and the way after the fixes would stretch it to about 10 days. Because the weekly quota does not reset until November 15, those 10 days are the boundary for whether I still dare to keep assigning work. If the burn went back to the old way, I would have to stop and wait before the reset.
 
@@ -63,7 +63,7 @@ At public prices, a pool of about 4 billion comes to about 1.85 months of Power 
 
 After the fixes I burn about 454M a week. Power's 500M a week can hold that, and it would use up about 90% of it. The way that burns 5.8M per hour needs 974M a week, so Power's 500M a week is not enough to cover it. The fastest way needs 1,327M a week. Maximum's 3,000M a week can hold it, and the usage is a little over 40% of it.
 
-![Three ways of burning use 1,327M, 974M and 454M a week, against Power's 500M a week and Maximum's 3,000M a week](fig4-weekly-vs-plans.png)
+![Three ways of burning use 1,327M, 974M and 454M a week, against Power's 500M a week and Maximum's 3,000M a week](fig4-weekly-vs-plans-en.png)
 
 The monthly account makes it clearer. The usage after the fixes is about 1,940M a month, the middle tier is about 4,180M a month, and the fastest tier is about 5,690M a month. So if the usage stays reined in, the Power tier is enough for me for a month. If it does not stay reined in, I have to budget at Maximum's price.
 
